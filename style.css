@@ -1,0 +1,48 @@
+.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+.tips {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  border-radius: 10px;
+  background: #fefefe 5px center/3em no-repeat;
+  background-position: 5px 10px;
+  position: relative;
+}
+
+.tipsp {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  border-radius: 10px;
+  background: #fefefe 5px center/3em no-repeat;
+  background-position: 5px 10px;
+  position: relative;
+}
+
+.r {
+  border: 2px solid #2369bd;
+  background-image: url("images/r.png");
+  position: relative;
+  z-index: 1;
+}
+.python {
+  background-repeat: no-repeat;
+  border: 2px solid #ffde4d;
+  background-image: url("images/p.png");
+  position: relative;
+  z-index: 1;
+}
