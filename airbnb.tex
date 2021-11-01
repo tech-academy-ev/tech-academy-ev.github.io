@@ -1,19 +1,15 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 %
 \documentclass[
   11pt,
 ]{article}
-\title{Data Science Project Guide: Airbnb}
-\author{TechAcademy e.V.}
-\date{Winter Term 2021/22}
-
-\usepackage{amsmath,amssymb}
 \usepackage[]{mathpazo}
-\usepackage{iftex}
-\ifPDFTeX
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -45,15 +41,14 @@
   pdftitle={Data Science Project Guide: Airbnb},
   pdfauthor={TechAcademy e.V.},
   colorlinks=true,
-  linkcolor={Maroon},
-  filecolor={Maroon},
-  citecolor={Blue},
-  urlcolor={blue},
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=blue,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage[top=0.5in, bottom=1.5in, left=1in, right=1in, a4paper]{geometry}
-\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
+\usepackage{longtable,booktabs}
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
@@ -62,7 +57,7 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx}
+\usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -152,11 +147,12 @@
 \usepackage{titling}
 \pretitle{\begin{center}\LARGE\includegraphics[width=6cm]{plot/TA_Logo.png}\\[\bigskipamount]}
 \posttitle{\end{center}}
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+
+\title{Data Science Project Guide: Airbnb}
+\author{TechAcademy e.V.}
+\date{Winter Term 2021/22}
 
 \begin{document}
 \maketitle
@@ -181,48 +177,48 @@
 \hypertarget{welcome}{%
 \section{Welcome!}\label{welcome}}
 
-In the first few chapters you will be introduced to the basics of the \texttt{R} and \texttt{Python} tracks respectively and you will find helpful explanations to questions you might have in the beginning of your coding journey. There will be a quick introduction to the Data Science track so that you can get started with the project quickly. So let's get started with the basics!
+In the first few chapters, we will introduce you to the basics of the \texttt{R} and \texttt{Python} tracks, and you will find helpful explanations to questions you might have at the beginning of your coding journey. There will be a quick introduction to the Data Science track so that you can get started with the project quickly. So let's start with the basics!
 
-In all tracks you will work on your project in small groups of fellow students. This not only helps you get the project done faster, it also helps make your results even better. Our experience shows: The different backgrounds of the members and discussing different opinions and ideas will produce the best results. Besides, it is of course more fun to work on a project together than to code alone!\\
-The groups can consist of a maximum of three members. You can choose your two teammates independently, we won't interfere with your arrangements. It is important that all group members complete the same level of difficulty (beginner or advanced), since the tasks are different in scope for each level. We explicitly encourage you to collaborate with students from different departments. This not only allows you to get to know people from other departments, but may even give you a whole new perspective on the project and tasks.
-When submitting it is important to note: for a certificate, each person must submit the project individually. However, this can be identical within your group. You can get more information at our first Coding Meetup on \textbf{November 24, 2021}.
+In all tracks, you will work on your project in small groups of fellow students. Such group work helps you finish the project faster and makes your results better. Our experience shows: The members' different backgrounds and discussing different opinions and ideas will produce the best results. Besides, it is more fun to work on a project together than to code alone.\\
+The groups can consist of a maximum of three members. You can choose your two teammates yourself, and we won't interfere with your arrangements. All group members must complete the same difficulty level (beginner or advanced track) since the tasks are different for each track. We encourage you to collaborate with students from various departments. This interdisciplinarity allows you to get to know people from other departments, giving you a whole new perspective on the project and tasks.\\
+It is essential to note that each person must submit the project individually for a certificate when submitting your project. However, each person's project can look identical to the other members of your group. You can get more information at our first Coding Meetup on \textbf{November 24, 2021}.
 
-This Airbnb case study and the associated project guide was developed and written entirely from scratch by TechAcademy's Data Science team. Lara Zaremba, Lukas Jürgensmeier, Annalisa Strauß, Karlo Lukic, and Inga Lasys developed the project in \texttt{R}, while Felix Schneider, Manuel Mair am Tinkhof, and Thilo Leitzbach developed it in \texttt{Python}. We would also like to give special thanks to Benjamin Lucht for his extensive input when conceiving this project.
+This Airbnb case study and its project guide were developed and written from scratch by TechAcademy's Data Science team. Lara Zaremba, Lukas Jürgensmeier, Annalisa Strauß, Karlo Lukic, and Inga Lasys developed the project in \texttt{R}, while Felix Schneider, Manuel Mair am Tinkhof, and Thilo Leitzbach developed it in \texttt{Python}. We would also like to thank Benjamin Lucht for his extensive input in making this project a reality.
 
 \hypertarget{whats-data-science-and-how-do-i-do-it}{%
 \section{What's Data Science and How Do I Do It?}\label{whats-data-science-and-how-do-i-do-it}}
 
-Data science is a multi-layered field in which the use of the latest machine learning methods is only a sub-area. To get there, you'll need many steps before -- from collecting to manipulating to exploring the data. And eventually, you will need to somehow communicate your findings.
+Data Science is a multi-layered field in which the latest machine learning methods are only a tiny part. To finish your data science analysis, you'll need to complete many steps -- from collecting to manipulating to exploring the data. And eventually, you will need to communicate your findings somehow.
 
-But first things first. To analyze data, it must first be obtained. You need to know where to obtain it and how to integrate it in your respective tools. The data is rarely available as it would be needed for further processing. Familiarizing yourself with the information available, cleaning it up and processing it into the desired formats that can be read by humans and machines are important steps that often make up a large part of the work.
+But first things first. To analyze the data, you must first obtain it. You need to know where to get it and how to integrate it into your respective tools. The data is rarely available as it would be necessary for further processing. Familiarizing yourself with the information available, cleaning it up, and processing it into the desired formats that humans and machines can read are essential steps that often make up a large part of the data scientist's work.
 
-Before the obtained data can be analyzed, the right tool must be selected and mastered: the programming language. The most often used languages for Data Science are \texttt{R}, which was explicitly developed for statistics, and \texttt{Python}, which is characterized by its additional versatility. The data scientist does not have to be a perfect software developer who masters every detail and paradigm, but the competent handling of syntax and idiosyncrasies is essential.
-There are some well-developed method collections, so-called packages or libraries, which provide a lot of functionality. The use of these collections also has to be learned and mastered.
-Once all of this is achieved, the data can finally be analyzed. Here too, it is important to know and understand the multitude of statistical approaches in order to be able to choose the right method for the problem at hand. The newest, best, most beautiful neural network is not always the solution for everything.\\
-One step is still missing in the data science process: understanding and communicating the results. The results are often not spontaneously intuitive or sometimes even surprising. Here, the specific expertise and creativity can be played out, especially in the visualization.
+Before you can analyze the obtained data, you must first select and master the right tool: the programming language. The most often used languages for Data Science are \texttt{R}, which was explicitly developed for statistics, and \texttt{Python}, which is characterized by its additional versatility. The data scientist does not have to be a perfect software developer who masters every detail and programing paradigm. Still, the competent handling of syntax (writing code) and idiosyncrasies is essential for her.
+There are some well-developed method collections, the so-called packages or libraries, which provide a lot of additional functionality to an elemental programing language. As a data scientist, you should also learn and master the use of these collections, especially when preparing the data.
+Once you have prepared your data, you can finally analyze it. It is also crucial to know and understand the multitude of statistical approaches to choose the correct method for the problem at hand. The newest, best, and most beautiful neural network is not always the solution to everything!
+One step is still missing in the data science process: understanding and communicating your results. The results are often not spontaneously intuitive or sometimes even surprising. Here, the data scientist employs specific expertise and creativity, especially during data visualization.
 
 \hypertarget{whats-r}{%
 \subsection{What's R?}\label{whats-r}}
 
-\texttt{R} is a programming language that was developed by statisticians in the early 1990s for use in the calculation and visualization of statistical applications. A lot has happened since then and by now, \texttt{R} is one of the most widely used programming languages in the field of data science. Code in \texttt{R} does not have to be compiled, but can be used interactively and dynamically. This makes it possible to quickly gain basic knowledge about existing data and to display it graphically.\\
-\texttt{R} offers much more than just programming, but also a complete system for solving statistical problems. A large number of packages and interfaces are available, with which the functionality can be expanded and integration into other applications is made possible.
+\texttt{R} is a programming language developed by statisticians in the early 90s to calculate and visualize statistical results. A lot has happened since then, and by now, \texttt{R} is one of the most widely used programming languages in Data Science. You don't have to compile your `R' code, but you can use it interactively and dynamically. Such an approach makes it possible to quickly gain basic knowledge about existing data and display it graphically.\\
+\texttt{R} offers much more than just programming. The language provides a complete ecosystem for solving statistical problems. A large number of packages and interfaces are available, which you can use to expand the basic functionality of the programing language to, say, create a COVID-Tracker application.
 
 \hypertarget{rstudio-cloud}{%
 \subsubsection{RStudio Cloud}\label{rstudio-cloud}}
 
-Before you can use \texttt{R}, you usually have to install some separate programs locally on your computer. Typically, you first install a ``raw'' version of \texttt{R}. In theory, you can then already start programming. However, it is very difficult to carry out an entire project with it. That's why there is RStudio, an Integrated Development Environment (IDE) for \texttt{R}. This includes many essential features that simplify programming with \texttt{R}. Among other things, an auto-completion of your code, a nicely structured user interface and many expansion options.
+Before you can use \texttt{R}, you usually have to install some separate programs locally on your computer. Typically, you first install a ``raw'' version of \texttt{R}. In theory, you can then start programming. However, it is challenging to carry out an entire project with a ``raw'' version of R. That's why there is RStudio, an Integrated Development Environment (IDE) for \texttt{R}. Such IDE includes many essential features that simplify programming with \texttt{R}. Among other things, an auto-completion of your code, a friendly user interface, and many expansion options. Think of R as your car's engine. And think of RStudio as your car's dashboard that shows fancy metrics, has a radio and allows you to adjust air-conditioning!
 
-Experience has shown that installing \texttt{R} and RStudio locally takes some effort. Fortunately, RStudio also has a cloud solution that eliminates these steps: RStudio Cloud. There it is possible to edit your project in exactly the same IDE in the browser without any prior installations. You can also easily switch your project from private to public and give your team an insight into your code via a link or by giving them access to the workspace directly. In this way you are able to easily exchange ideas within your team.
+Experience has shown that installing \texttt{R} and RStudio locally on your computer takes some effort. Fortunately, RStudio also has a cloud solution that eliminates these steps: RStudio Cloud. You can edit your project in the same IDE in the browser without any prior installations on your computer. You can also easily switch your project from a private to a public project and give your team an insight into your code via a link or by giving them access to the workspace directly. In this way, you can easily exchange ideas with your team.
 
-We will introduce RStudio Cloud and unlock access to our workspace on our first Coding Meetup. Until then, focus on learning the ``hard skills'' of programming with your courses on DataCamp. This brings us to your curriculum in the next section.
+We will introduce RStudio Cloud and unlock access to our workspace on our first Coding Meetup. Until then, focus on learning the ``hard skills'' of programming with the courses on DataCamp. That brings us to your curriculum in the next section!
 
 \hypertarget{curriculum}{%
 \subsubsection{Curriculum}\label{curriculum}}
 
-The following list shows the required DataCamp courses for the Data Science with \texttt{R} Track. As a beginner, please stick to the courses of the ``beginner'' program, ambitious beginners can of course also take the advanced courses afterwards. However, the courses should be worked through in the order in which they are listed.\\
-The same applies to the advanced courses. Here, too, the specified courses should be processed in the given order. Since it can of course happen that you have already mastered the topics of an advanced course, individual courses can be replaced. The topics of the advanced courses are given in key points. If these key points seem familiar to you, then take a look at the table of contents of the corresponding DataCamp course. If you are convinced that this course does not provide any added value for you, it can be replaced by one of the courses in the ``Exchange Pool'' (see list). However, this exchange course should not be processed until all other courses in the advanced course have been completed.
+The following list shows the required DataCamp courses for the Data Science with \texttt{R} Track. As a beginner, please stick to the courses of the ``beginner'' program. Ambitious beginners can, of course, take the advanced courses afterward. However, it would be best if you worked through the courses in the order we listed them.\\
+The same applies to the advanced courses. Here, too, you should finish the specified courses in the given order. Since it can, of course, happen that you have already mastered the topics of an advanced course, you can replace some courses. If you are convinced that the course does not add value to you, feel free to replace it with one of the courses in the ``Exchange Pool'' (see list). However, you should not pursue an exchange course until you finish all chapters from the advanced course: ``Intermediate R.''
 
-Both beginners and advanced learners must have completed at least two thirds of the curriculum in order to receive the certificate. For the beginners this means at least up to the course ``Data Visualization with ggplot2 (Part 1)'' and for the advanced at least up to ``Supervised Learning in \texttt{R}: Classification''. In addition, at least two thirds of the project tasks must have been completed.
+To receive the certificate, both beginners and advanced learners must complete at least two-thirds of the curriculum (6/9 courses). For the beginners, this means until -- and including -- the course ``Data Visualization with ggplot2 (Part 1)'' and for the advanced until --and including -- ``Supervised Learning in \texttt{R}: Classification.'' In addition, you should complete at least two-thirds of the project tasks. After completing the curriculum and the project's (minimal) requirements, you will receive your TechAcademy certificate!
 
 \begin{tips}r
 
@@ -294,10 +290,11 @@ Both beginners and advanced learners must have completed at least two thirds of 
   \href{https://www.datacamp.com/courses/optimizing-r-code-with-rcpp}{Optimizing R Code with Rcpp (4h)}
 \end{itemize}
 
+
 \end{tips}
 
-\hypertarget{links}{%
-\subsubsection{Links}\label{links}}
+\hypertarget{helpful-links}{%
+\subsubsection{Helpful Links}\label{helpful-links}}
 
 \begin{itemize}
 \tightlist
@@ -314,29 +311,28 @@ Both beginners and advanced learners must have completed at least two thirds of 
 \hypertarget{whats-python}{%
 \subsection{What's Python?}\label{whats-python}}
 
-\texttt{Python} is a dynamic programming language. The code is executed in the interpreter, which means that the code does not first have to be compiled. This makes \texttt{Python} very easy and quick to use. The good usability, easy readability and simple structuring were and still are core ideas in the development of this programming language.
-Basically, you can use \texttt{Python} to program according to any paradigm, whereby structured and object-oriented programming is easiest due to the structure of the language, but functional or aspect-oriented programming is also possible. These options give users great freedom to design projects the way they want, but also great freedom to write code that is difficult to understand and confusing. For this reason, certain standards that are based on the so-called \texttt{Python} Enhancement Proposals (PEP) have developed over the decades.
+\texttt{Python} is a dynamic programming language. You can execute the code in the interpreter, so you do not have to compile the code first. This feature makes \texttt{Python} very easy and quick to use. The excellent usability, easy readability, and simple structuring were and still are core ideas in developing this programming language.
+You can use \texttt{Python} to program according to any paradigm, whereby structured and object-oriented programming is most straightforward due to the structure of the language. Still, functional or aspect-oriented programming is also possible. These options give users significant freedom to design projects the way they want and great space to write code that is difficult to understand and confusing. For this reason, programmers developed specific standards based on the so-called \texttt{Python} Enhancement Proposals (PEP) over the decades.
 
 \hypertarget{anaconda-and-jupyter}{%
 \subsubsection{Anaconda and Jupyter}\label{anaconda-and-jupyter}}
 
-Before you can use \texttt{Python}, it must be installed on the computer. \texttt{Python} is already installed on Linux and Unix systems (such as macOS), but often it is an older version. Since there are differences in the handling of \texttt{Python} version 2 -- which is not longer supported anymore -- and version 3, we decided to work with version 3.6 or higher.
+Before you can use \texttt{Python}, you must install it on the computer. \texttt{Python} is already installed on Linux and Unix systems (such as macOS), but often it is an older version. Since there are differences in the handling of \texttt{Python} version 2 -- which is no longer supported anymore -- and version 3, we decided to work with version 3.6 or higher.
 
-One of the easiest ways to get both \texttt{Python} and most of the best known programming libraries is to install Anaconda. There are detailed explanations for the installation on all operating systems on the \href{https://docs.anaconda.com/anaconda/install/}{website} of the provider.
+One of the easiest ways to get Python and most of the best-known programming libraries is to install Anaconda. There are detailed explanations for installing all operating systems on the \href{https://docs.anaconda.com/anaconda/install/}{website} of the provider.
 
-With Anaconda installed, all you have to do is open the Anaconda Navigator and you're ready to go. There are two ways to get started: Spyder or Jupyter. Spyder is the integrated development environment (IDE) for \texttt{Python} and offers all possibilities from syntax highlighting to debugging (links to tutorials below). The other option is to use Jupyter or Jupyter notebooks. It is an internet technology based interface for executing commands. The big advantage of this is that you can quickly write short code pieces and try them out interactively without writing an entire executable program.
+With Anaconda installed, all you have to do is open the Anaconda Navigator, and you're ready to go. There are two ways to get started: Spyder or Jupyter. Spyder is the integrated development environment (IDE) for \texttt{Python} and offers all possibilities from syntax highlighting to debugging (links to tutorials below). The other option is to use Jupyter or Jupyter notebooks. It is an internet technology-based interface for executing commands. The significant advantage of this is that you can quickly write shortcode pieces and try them out interactively without writing an entire executable program.
 Now you can get started! If you have not worked with Jupyter before, we recommend that you complete the course on DataCamp (\url{https://www.datacamp.com/projects/33}) first. There you will get to know many tips and tricks that will make your workflow with Jupyter much easier.
 
-In order to make your work and, above all, the collaboration easier, we are working with the Google Colab platform that contains a Jupyter environment with the necessary libraries. You can then import all the data necessary for the project with Google Drive. We will introduce this environment during our first Coding Meetup. Until then, focus on learning the ``hard skills'' of programming with your courses on DataCamp. This brings us to your curriculum in the next section.
+To make your work and, above all, the collaboration more accessible, we are working with the Google Colab platform that contains a Jupyter environment with the necessary libraries. You can then import all the data required for the project with Google Drive. We will introduce this environment during our first Coding Meetup. Until then, focus on learning the ``hard skills'' of programming with your courses on DataCamp. This topic brings us to your curriculum in the next section!
 
 \hypertarget{curriculum-1}{%
 \subsubsection{Curriculum}\label{curriculum-1}}
 
-The following list shows the DataCamp courses for the \texttt{Python} data science track. As a beginner, please follow the courses for the beginner level. These should be processed in the order in which they are listed.\\
-The same applies to the advanced courses. Here, too, the specified courses should be processed in the given order. Since it can of course happen that you have already mastered the topics of an advanced course, individual courses can be replaced. The topics of the advanced courses are given in brief. If these key points seem familiar to you, then take a look at the table of contents of the corresponding DataCamp course.
-If you are convinced that this course does not provide any added value for you, it can be replaced by one of the courses in the ``Exchange Pool'' (see list). However, this course should not be processed until all other courses in the intermediate \texttt{Python} course have been completed.
+The following list shows the required DataCamp courses for the Data Science with \texttt{Python} Track. As a beginner, please stick to the courses of the ``beginner'' program. Ambitious beginners can, of course, take the advanced courses afterward. However, it would be best if you worked through the courses in the order we listed them.\\
+The same applies to the advanced courses. Here, too, you should finish the specified courses in the given order. Since it can, of course, happen that you have already mastered the topics of an advanced course, you can replace some courses. If you are convinced that the course does not add value to you, feel free to replace it with one of the courses in the ``Exchange Pool'' (see list). However, you should not pursue an exchange course until you finish all chapters from the advanced course: ``Intermediate Python.''
 
-Both beginners and advanced learners must have completed at least two thirds of the curriculum in order to receive the certificate. For beginners this means at least up to the course \href{https://learn.datacamp.com/courses/merging-dataframes-with-pandas}{Merging DataFrames with pandas (4h)} (including this course) and for advanced learners at least up to the \href{https://learn.datacamp.com/courses/exploratory-data-analysis-in-python}{Exploratory Data Analysis in Phyton (4h)} (including this course). In addition, at least two thirds of the project tasks have to be completed.
+To receive the certificate, both beginners and advanced learners must complete at least two-thirds of the curriculum (6/9 courses). For the beginners, this means until -- and including -- the course ``\href{https://learn.datacamp.com/courses/merging-dataframes-with-pandas}{Merging DataFrames with pandas (4h)}'' and for the advanced until --and including -- ``\href{https://learn.datacamp.com/courses/exploratory-data-analysis-in-python}{Exploratory Data Analysis in Phyton (4h)}.'' In addition, you should complete at least two-thirds of the project tasks. After completing the curriculum and the project's (minimal) requirements, you will receive your TechAcademy certificate!
 
 \begin{tipsp}p
 
@@ -418,10 +414,11 @@ Both beginners and advanced learners must have completed at least two thirds of 
   \href{https://www.datacamp.com/courses/forecasting-using-arima-models-in-python}{ARIMA Models in Python (4h)}
 \end{itemize}
 
+
 \end{tipsp}
 
-\hypertarget{links-1}{%
-\subsubsection{Links}\label{links-1}}
+\hypertarget{helpful-links-1}{%
+\subsubsection{Helpful Links}\label{helpful-links-1}}
 
 Official Tutorials/Documentation:
 
@@ -453,11 +450,11 @@ Further Explanations:
 \hypertarget{coding-meetups-and-requirements}{%
 \subsubsection{Coding Meetups and Requirements}\label{coding-meetups-and-requirements}}
 
-Now that you have learned the theoretical foundation in the DataCamp courses, you can put your skills into practice. We have put together a project for you based on real data sets. You can read about the details in the following chapters of this project guide.\\
-Of course, we will also go into more detail about the project and the tools that go with it. We will discuss everything you need to know during the first Coding Meetup, which will take place on \textbf{November 24, 2021}. After that, the work on the project will officially begin.
+Now that you have learned the theoretical foundation of Data Science in the DataCamp courses, you can put your skills into practice. We have put together a project for you based on real data sets. You can read about the details in the following chapters of this project guide.\\
+Of course, we will also describe the project and the tools that go with it. We will discuss everything you need to know during the first Coding Meetup, which will take place on \textbf{November 24, 2021}. After that, your work on the project will officially begin.
 You can find the exact project tasks together with further explanations and hints in the following chapters.
 
-To receive the certificate, it is essential that you have solved at least two thirds of the ``Exploratory Data Analysis'' part of the project. For the advanced participants, the entire ``Price Prediction -- The Application of Statistical Models'' part is added. In addition, two thirds of the respective curriculum on DataCamp must be completed. You can find more detailed information on this in the ``Curriculum'' section of the respective programming language above.
+To receive your TechAcademy certificate, you must solve at least two-thirds of the ``Exploratory Data Analysis'' part. We added the ``Price Prediction -- The Application of Statistical Models'' part for the advanced participants. In addition, you should complete two-thirds (6/9 courses) of the respective curriculum on DataCamp. You can find more detailed information about the curriculum in the ``Curriculum'' section of the different programming languages above.
 
 \newpage
 
@@ -469,32 +466,27 @@ To receive the certificate, it is essential that you have solved at least two th
 
 Welcome to the project guide for your TechAcademy Data Science project! This document will guide you through the different steps of your project and provide you valuable hints along the way. However, the guide is not a detailed step-by-step manual. That is, we think you should develop the skills of coming up with your own way of solving different tasks. Such an approach is an excellent opportunity to apply the knowledge and tools you acquire through DataCamp.
 
-Questions might come up, or you might not know how to solve a task right away - but do not worry - that is just a part of coding. In those cases, you can find helpful links in the introductory chapters, where someone might have answered your question(s). If not -- and in the unlikely case that even Google cannot provide the answer you -- the TechAcademy mentors will help you via Slack or directly during the coding meetups. You are strongly encouraged to chat with your mentors!
+Questions might come up, or you might not know how to solve a task right away - but do not worry - that is just a part of coding. In those cases, you can find helpful links in the introductory chapters, where someone might have answered your question(s). If not -- and in the unlikely case that even Google cannot provide the answer -- our TechAcademy mentors will help you via Slack or directly during the coding meetups. You are strongly encouraged to chat with your group's mentors!
 
 \textbf{At the end of the project guide, you will find an overview of the tasks you must complete}, depending on your track (beginner vs.~advanced). You can use that list to check which tasks you still need to complete or which assignments are relevant for your track.
 
 \hypertarget{what-is-this-project-about}{%
 \subsection{What is this Project About?}\label{what-is-this-project-about}}
 
-Having worked with Spotify data last semester, we will focus on a different topic this semester: \textbf{Airbnb}. More precisely, you will analyze a part of a very detailed data set of Airbnb offers in a city of your choice!
+Having worked with Spotify data last semester, we will focus on a different topic this semester: \textbf{Airbnb}. More precisely, you will analyze data about Airbnb offers in a city of your choice!
 You can choose from the following list of cities according to your preferences, but each group member should work on a different city:
 
 Amsterdam,
-Berlin,
 Boston,
-Denver,
 Edinburgh,
-London,
 Madrid,
-Melbourne,
 München,
-NYC,
-Rom
-Seattle,
-Sydney.
+Rom .
 
-Your data was scraped and is hosted by the Inside Airbnb project. You will find all kinds of information in that data set -- both valuable and worthless to your decision of finding your perfect apartment.
-In the analogy of the typical data science workflow, we have split this project into two parts. First, you are going to learn how to perform an Exploratory Data Analysis (EDA). You will have a closer look at the data, transform it and then get to know the different variables and how they look in various visualizations. Beginners will complete the project after this first part. Still, it would be beneficial for you to try and work on the second part. In the next part of the project, you will develop a model that predicts Airbnb prices in your respective city as accurately as possible. You will start with a linear regression algorithm which you can modify as you please. Additionally, you will explore other possibilities of modeling and data prediction.
+Find the links to all datasets \href{https://docs.google.com/document/d/1nBkeJmpnoiATVw4B3DwrB45uo0TpQFE_iTisyh4p9Ro/edit?usp=sharing}{here}.
+
+Your data was scraped and is hosted by the Inside Airbnb project. You will find all kinds of information in that data set -- both valuable and worthless to your analysis.
+In the analogy of the typical data science workflow, we have split this project into two parts. First, you are going to learn how to perform an Exploratory Data Analysis (EDA). You will have a closer look at the data, transform it and then get to know the different variables and how they look in various visualizations. Beginners will have completed the project after this first part. Still, it would be beneficial for beginners to try and work on the second part too. In the next part of the project advanced programmers will develop a model that predicts Airbnb prices in their city as accurately as possible. They will start with a linear regression algorithm which can be modified as pleased. Additionally, they will explore other possibilities of modeling and data prediction.
 
 But first things first: What exactly is EDA, and what can you achieve with it?
 
@@ -502,8 +494,6 @@ But first things first: What exactly is EDA, and what can you achieve with it?
 \subsection{Exploratory Data Analysis -- getting to know the data set}\label{exploratory-data-analysis-getting-to-know-the-data-set}}
 
 As a first step, you will get to know the data set. This step means you will describe the data and answer questions like: What variables does the data set contains? And how are they related? For this purpose, you often use graphical tools like box plots or histograms.
-
-Imagine you're a tourist on a budget. First things first, you might want to check for periods when apartments (henceforth: Airbnbs) are available for booking on the market. Remember the basics of Economics? A lower supply of a product on the market usually implies its price will be high, as it is more valuable. Vice versa, a higher product supply on the market might mean a lower price, as the product is less valuable. That is precisely what you want if you are on a budget! Explore the data set and try to find whether that basic Economic idea holds in the Airbnb context.
 
 We structured the first part of the project to let you know the data thoroughly by completing the given tasks one after the other. As a beginner, you can stop after this part because you will have fulfilled the necessary coding requirements for your TechAcademy certificate. However, if this first part inspires you to step up your ``apartment-search-game'', we encourage you to work on the second part!
 
@@ -529,7 +519,7 @@ Ready to get your hands dirty? After getting a first impression of what this pro
 Before you can dive into the data, set up your programming environment. This will be the place where the magic happens -- all your coding will take place there.
 
 \begin{tips}r
-In your workspace on \href{https://rstudio.cloud/projects}{rstudio.cloud} we have already uploaded an ``assignment'' for you (Template Airbnb). When you create a new project within the workspace \emph{Class of '21/22 \textbar{} TechAcademy \textbar{} Data Science with R}, your own workspace will open up. We've already made some arrangements for you: The data sets that you will be working with throughout the project are already available in your working directory. We also created an `RMarkdown' file, with which you will be able to create a detailed report of your project. You can convert this file into a PDF document when you have completed the documentation. Open the file ``Markdown\_Airbnb.Rmd'' and see for yourself!
+In your workspace on \href{https://rstudio.cloud/projects}{rstudio.cloud} we have already uploaded an ``assignment'' for you (Template Airbnb). When you create a new project within the workspace \emph{Class of '21/22 \textbar{} TechAcademy \textbar{} Data Science with R}, your own workspace will open up. We've already made some arrangements for you: The data sets that you will be working with throughout the project are already available in your working directory. We also created an `RMarkdown' file, with which you will be able to create a detailed report of your project. You can convert this file into a HTML document when you have completed the documentation. Open the file ``Markdown\_Airbnb.Rmd'' and see for yourself!
 
 \end{tips}
 
@@ -546,8 +536,12 @@ We will give you a more detailed step by step demo during the first coding meetu
 \hypertarget{visualizing-apartment-availability}{%
 \subsection{Visualizing Apartment Availability}\label{visualizing-apartment-availability}}
 
+Imagine being a tourist on a budget. First things first, you might want to check for periods when apartments (or, Airbnbs) are available for booking on the market. Remember the basics of economics? A lower supply of a product on the market usually comes with higher prices (all else equal). Vice versa, a higher supply of a product might come with a lower price. That is precisely what you want if you are on a budget! Explore the data set looking for periods with high availability and find out later whether that basic economic idea holds in the Airbnb context.
+
 \hypertarget{import-clean-and-transform-the-data}{%
 \subsubsection{Import, Clean and Transform the Data}\label{import-clean-and-transform-the-data}}
+
+In this chapter, you will apply the knowledge that you gained throughout the semester to real-world data. The exercises will cover typical problems that you usually encounter when analyzing data.
 
 First things first, you will need to load the \texttt{calendar.csv} file into your coding environment: How is the data structured, and which variables does it contain? To get a peek at the data you'll be working with, output the first/last few rows. Also, compute some basic descriptive statistics (count, mean, and standard deviation) and determine the column's data types.
 
@@ -558,23 +552,23 @@ First the data set has to be loaded from your folder structure into the workspac
 
 Now get an overview of the data set. How is it structured and which variables does it contain? You can use the following functions, for example:
 
-\texttt{head(calendar)}\strut \\
-\texttt{str(calendar)}\strut \\
+\texttt{head(calendar)}~\\
+\texttt{str(calendar)}~\\
 \texttt{summary(calendar)}
 
 \end{tips}
 
 \begin{tipsp}p
-Import the pandas library to your notebook with \texttt{import\ pandas\ as\ pd}. Load the data from your csv-file into a data frame with pandas' \texttt{.read\_csv()} function.
+Import the pandas library to your notebook with \texttt{import\ pandas\ as\ pd}. Use the same pandas method used to import CSV data on Datacamp to import CSV data from a web server: Just replace the file path with the URL of the CSV file.
 
-Have a look at the first rows of your data frame, print some descriptive statistics and get a brief summary of the data with the pandas methods \texttt{.head()}, \texttt{.describe()} and \texttt{.info()}.
-Take note of the data format of the ``price'' column -- you'll make use of that information in the next step.
+Take a look at the first rows of your data frame and print some descriptive statistics with the pandas methods \texttt{.head()} and \texttt{.describe()}.
+Also, find out the data types for each column: Are values in the price column stored as numbers?
 
 \end{tipsp}
 
 Visualization is one of the most helpful methods to get a feeling for the relation of the various variables of the data set. As already mentioned, this process is called \emph{Exploratory Data Analysis} (EDA).
 
-Before we can start with that, we first have to clean the data such that the functions can process the data set properly. You will have to do that quite often in the field of Data Science, since the data very often comes in an unusable format. In our case, for example, the values in the price column are stored as type \texttt{string} -- this becomes an issue when performing math operations.
+Before we can start with that, we first have to clean the data such that the functions can process the data set properly. You will have to do that quite often in the field of Data Science, since the data very often comes in an unusable format. In our case, for example, the values in the price column are not stored as a numeric data type -- this becomes an issue when performing math operations.
 
 \begin{tips}r
 In order for \texttt{R} to process this, we need to remove a character from the observations and convert the variable into a numeric format. You can use the functions \texttt{str\_remove\_all()} or \texttt{gsub()} together with \texttt{as.numeric()} for this.
@@ -587,9 +581,9 @@ As a last step, transform the date variable into the \texttt{R} format \texttt{d
 \end{tips}
 
 \begin{tipsp}p
-To remove a character in a column's cells use pandas' \texttt{.replace()} method. Similarly, convert the data to a different type with \texttt{.astype()} (Hint: You will need to apply the replace method twice on the price column before converting).
+To remove a character in a column's cells use pandas' \texttt{.replace()} method. Similarly, convert the data to a different type with \texttt{.astype()} (Hint: You might need to apply the replace method twice on the price column before converting).
 
-The column indicating if an apartment is available or not contains two types of values - ``t'' and ``f'' - which obviously stand for the boolean values True and False. To save you some headaches in the next task convert both values to be of type boolean.
+Note that the column indicating apartment availability contains two values, namely ``f'' and ``t''. Replace ``f'' and ``t'' with the associated boolean values \texttt{FALSE} and \texttt{TRUE}.
 
 \end{tipsp}
 
@@ -603,11 +597,9 @@ If you need further help, you can also use the \texttt{dplyr} Cheat Sheet for th
 \end{tips}
 
 \begin{tipsp}p
-To sum the numbers of available apartments for each day you first need to filter the data frame by all available apartments.
+To understand this step, remember that you converted the values in the ``available'' column to be of type \texttt{bool}. In Python, the boolean value True is equal to 1, while False is equal to 0. Thus, (True + True + False) is equal to 2 (you can try this out by executing \texttt{print(True\ +\ True\ +\ False)}). So, to get the number of available apartments, you could simply sum the (boolean) values in the availability column!
 
-Now, understand the next step, remember that you converted the values in the ``available'' column to be of type \texttt{bool} before. In Python, the Boolean value True is equal to 1, while False is equal to 0. Thus, (True + True + False) is equal to 2 (try it out: \texttt{print(True\ +\ True\ +\ False)}), and thus, you could now sum the entries in the available column to get the number of available apartments.
-
-So, first group the data frame by date with the \texttt{.groupby()}method and use \texttt{.sum()} to get the number of available apartments for each date.
+But before doing so, make sure to group the data frame by date with \texttt{.groupby()} in combination with the aggregation method \texttt{.sum()} as you need to get the number of available apartments for each date.
 
 The pandas cheat sheet might be of help here - feel free to make use of it.
 
@@ -630,7 +622,7 @@ Having the data in the right format we can now start plotting a simple line grap
 
 \end{tipsp}
 
-Looking at the line plot, you can see a clear pattern with respect to different dates. There are distinct drops in the availability of the Airbnb apartments. \textbf{One task for your project is to explain the cause behind this pattern.}
+Looking at the line plot, you can see a clear pattern with respect to different dates. There are distinct drops in the availability of the Airbnb apartments. \textbf{One task for your project is to think about a potential cause behind this pattern: Is there one?}
 
 \hypertarget{calendar-plot}{%
 \subsubsection{Calendar Plot}\label{calendar-plot}}
@@ -639,7 +631,7 @@ A line plot is nice but let's be honest, it's nothing to write home about! How a
 There are country-specific holidays and seasons after all!
 
 \begin{tips}r
-tbd
+Check out the \href{https://r-coder.com/calendar-plot-r/}{calendR} package to visualize the availability of Airbnb listings.
 
 \end{tips}
 
@@ -657,6 +649,16 @@ Now that you are certain that there are some distinct patterns, you are willing 
 
 Calculate the correlation coefficient between availability \& price and plot both variables to confirm your intuition. Regarding visualization, you could choose between a) line plot (boring) or b) scatter plot for example. Please write a short sentence explaining what the correlation coefficient measures in this context.
 
+\begin{tips}r
+Have a look at \texttt{ggplot2} and try plotting a scatter plot with \texttt{geom\_point}. You can calculate the correlation using the stats function \texttt{cor(x,y)}.
+
+\end{tips}
+
+\begin{tipsp}p
+You can use matplotlib's scatter plot for plotting and pandas's \texttt{.corr()} method to compute the correlation coefficient.
+
+\end{tipsp}
+
 \begin{center}\includegraphics[width=1\linewidth]{plot/01_python/corr_availability_price} \end{center}
 
 \textbf{Answer:} ``The Correlation Coefficient shows \ldots{}''.
@@ -664,37 +666,9 @@ Calculate the correlation coefficient between availability \& price and plot bot
 \hypertarget{visualize-individual-airbnb-offers-with-the-listings-dataset}{%
 \subsection{Visualize individual Airbnb offers with the listings dataset}\label{visualize-individual-airbnb-offers-with-the-listings-dataset}}
 
-Now, you might also wonder in which neighborhoods are Airbnbs cheaper or more expensive, respectively. And since, as an (aspiring) Data Scientist, you love numbers and stats, you also want to find the average price of an Airbnb in the cheap (and more expensive) neighborhood. Does the average price of an Airbnb in a cheap/expensive area make sense? Use the variation around that average price for both neighborhood types to confirm your results.
+Can we use the mean price of a neighbourhood to measure popularity? Could be. In the next section you will compute the average price for each neighbourhood and since, as an (aspiring) Data Scientist you love numbers and stats, you also want to compute the price variances for these neighborhoods.
 
-After looking at the availability over time using the \texttt{calendar} data set in the first step, we would like to find out a little more about the price structures of the available apartments. For this, we need the \texttt{listings} data set that we can load into the workspace as usual. A closer look reveals that the \texttt{price} and \texttt{cleaning\_fee} columns contain characters that you -- once again -- need to clean.
-
-Therefore, as in the first task, you must delete the dollar sign and the comma from these columns. We recommend a for-loop since you used the same procedure for the \texttt{price} and \texttt{cleaning\_fee} columns. Implement this loop in a self-written function \texttt{clean\_price()}, so that you save a lot of lines of code, especially in the prediction part.
-
-\begin{tips}r
-There are different ways to create this for-loop, so just experiment with what makes most sense to you.
-
-But you definitely want to iterate over all values within one column, so your for-loop function should contain
-
-\texttt{for\ (i\ in\ 1:length(column\_name))}
-
-where ``column\_name'' only acts as a place holder for the variable you want to work on.
-
-\end{tips}
-
-\begin{tipsp}p
-
-Create a list containing the column names of both columns you want to iterate over.
-
-The for-loop body doesn't necessarily need more than one line and might start like this:
-
-\begin{verbatim}
-for column_name in column_names_list:
-    df[column_name] = df[column_name].str.replace(....
-\end{verbatim}
-
-\end{tipsp}
-
-Now that we have cleaned up the data set, we can take a closer look at the price structure of the various neighborhoods. First of all, we would like to know what the average price and the corresponding standard deviation is for each neighborhood. Make a list with the names of the different parts of the city as well as the \texttt{mean} and the \texttt{sd}.
+Start off by importing the listings dataset. As in the first task, you will need to clean the price column. Done that, we can take a closer look at the price structure of the various neighbourhoods. First of all, we would like to know what the average price and the corresponding standard deviation is for each neighborhood. List the names of the different parts of the city as well as their \texttt{mean} and the \texttt{sd}.
 
 \begin{tips}r
 For this, you can again use \texttt{dplyr}-functions like \texttt{group\_by()} or \texttt{summarize()}.
@@ -702,11 +676,11 @@ For this, you can again use \texttt{dplyr}-functions like \texttt{group\_by()} o
 \end{tips}
 
 \begin{tipsp}p
-Once again you can use the groupby method to group by neighborhood and apply the aggregation function \texttt{.std()} to get the standard deviations. Similarly, you can use \texttt{.mean()} to get the mean values. Filter both data frames by the price column.
+Once again you can use the groupby method to group by neighborhood and apply an aggregation function for calculating the standard deviation. A very similar function exists for caluclating the mean values. Filter both data frames by the price column.
 
 \end{tipsp}
 
-We now want to compare the price distribution for the on average most expensive district with the on average least expensive district. For this, you have to think about the different types of plots that you have gotten to know in your courses and have to find the plot type that is most suited for this type of visualization. Once you have created the diagram, you will probably have to filter out some of the outliers with extremely high prices in order to get a meaningful plot.
+We now want to visually compare the price distribution for the on average most expensive district with the on average least expensive district. For this, you have to think about the different types of plots that you have gotten to know in your courses and have to find the plot type that is most suited for this type of visualization. Once you have created the diagram, you will probably have to filter out some of the outliers with extremely high prices in order to get a meaningful plot.
 
 \begin{tips}r
 In \texttt{ggplot2} graphics, you can easily filter in the plot specifications with \texttt{xlim} or \texttt{ylim}.
@@ -718,20 +692,22 @@ One way to find the on average most expensive neighborhood is to simply sort the
 
 For plotting: The Matplotlib documentation is a great source of inspiration with many examples including code that generated them.
 
+Note: If you do not want to remove outliers, the plot could end up looking very\ldots{} strange. In this case, it is best to create two different plots, i.e.~one for each neighbourhood.
+
 \end{tipsp}
 
 \begin{center}\includegraphics[width=1\linewidth]{plot/01_python/box_plots} \end{center}
 
-On the Airbnb website, the available apartments can be sorted by price and are shown to the customer in the appropriate order. One method to end up higher in this ranking is to quote a low price and a higher cleaning fee. Can we see this behavior in our data set? To figure this out, create an additional column in your data frame with the name \texttt{price\_and\_clean}, in which you add both individual prices. Now examine how the price distribution changes in the two previously examined parts of the city. Compare the price and price + cleaning fee of a district in a diagram. What do you observe?
+But wait! Until now we focussed much on prices\ldots{} What about customer preferences? Up next, we will use the average number of reviews as an indicator for `hotness' of an area in your city.
 
-But wait! Price is not all that matters. What about customer preferences? It is valuable to check for the hottest areas in the city of your interest. We will use the number of reviews to measure the `hotness' of an area in your preferred city.
+\hypertarget{analyzing-number-of-reviews-per-neighbourhood}{%
+\subsection{Analyzing number of Reviews per Neighbourhood}\label{analyzing-number-of-reviews-per-neighbourhood}}
 
-\hypertarget{analyzing-of-reviews-per-neighbourhood}{%
-\subsection{Analyzing \# of Reviews per Neighbourhood}\label{analyzing-of-reviews-per-neighbourhood}}
+In the previous part you got to know and visualized the listings data set. However, one important piece of information is not included in this data that we could use to measure popularity: How about using the number of reviews?
 
-In the previous part you got to know and visualized the listings data set. However, one important piece of information is not included in this data set: How popular are the individual apartments? After all, you may refrain from choosing the cheapest apartment knowing that none of the 10 previous guests was satisfied!
+We first start off by computing the average number of reviews per apartment. Afterwards, we will do the same for each neighborhood. Computing the number of reviews for each apartment could lead to a very important feature for price prediction.
 
-We use the number of reviews on Airbnb as a measure of quality. This variable could later become very important for price prediction. Fortunately, we have another data set for each city, \texttt{reviews}, in which the apartment ID and the date are saved for each individual review. Our goal now is to count the number of reviews for each individual apartment and to save them. Since we can also find the ID in the listings data set, we can use this variable to merge the two data sets.
+Fortunately, we have another data set for each city, \texttt{reviews}, in which the apartment ID and the date are saved for each individual review. Our goal now is to count the number of reviews for each individual apartment and to save them. Since we can also find the ID in the listings data set, we can use this variable to merge the two data sets.
 
 First load your city's \texttt{reviews} data set into your workspace and take a closer look at it with the familiar functions. Afterwards, count the number of reviews per apartment.
 
@@ -741,13 +717,11 @@ This works with the \texttt{table()} function or with \texttt{group\_by()} and \
 \end{tips}
 
 \begin{tipsp}p
-Count the number of reviews per apartament (i.e.~per ``listing\_id'') with the functions you're already familiar with at this point. You can use the groupby argument \texttt{as\_index=False} to avoid setting the column id as index.
+Count the number of reviews per apartament (i.e.~per ``listing\_id'') with the functions you're already familiar with at this point. You can use the groupby argument \texttt{as\_index=False} to avoid setting the column with listing ids as index, which might make live more easy when we merge data frames in later steps.
 
 \end{tipsp}
 
-Now look at the new data set. Does each ID have exactly one entry with the number of ratings?
-
-To be able to merge the data sets, you have to rename the newly generated variables in the new data set. Name the apartment ID analogous to the \texttt{listings} data set \texttt{id}, as well as the number of reviews \texttt{n\_reviews}.
+To be able to merge with the listings data set, you have to rename the newly generated variables in the new data set. Name the apartment ID analogous to the \texttt{listings} data set \texttt{id}, as well as the number of reviews \texttt{n\_reviews}.
 
 \begin{tips}r
 This can be done with the function \texttt{rename()} from the \texttt{dplyr} package.
@@ -775,20 +749,17 @@ Merge with \texttt{listings\_reviews=pd.merge(dataframe1,dataframe2,left\_on=...
 
 \end{tipsp}
 
-Take a look at the new data set. Is the new variable \texttt{n\_reviews} in the correct data format?
+Now look at the new data set. Does each ID have exactly one entry with the number of ratings?
+Reduce the data frame to the columns listing id, neighbourhood, and number of reviews for having a better overview of your data.
 
 \hypertarget{your-first-barplot}{%
 \subsubsection{Your First Barplot}\label{your-first-barplot}}
 
-We now want to take a closer look at a smaller part of the data set: What do the most popular apartments have in common? As an indicator of the popularity of an offer we use the previously generated number of reviews \texttt{n\_reviews}.
+We now want to take a closer look at a smaller part of the data set: What do the most reviewed apartments have in common? Is it the location..?
 
 Extract the 200 most reviewed apartments. One approach for this is to first sort the data set in descending order according to \texttt{n\_reviews} and then to extract the first 200 entries into a new data set.
 
 Now you can easily visualize the districts in which the 200 most frequently reviewed apartments are located. A bar plot is ideal for this. Feel free to try other types of plots that can be used to best answer this question.
-
-This is what it could look like:
-
-\begin{center}\includegraphics[width=1\linewidth]{plot/01_python/hbars_reviews} \end{center}
 
 \begin{tips}r
 The key commands that you can use for this within \texttt{ggplot()} are \texttt{geom\_bar()} and \texttt{coord\_flip()}.
@@ -803,19 +774,21 @@ If Python throws you an \texttt{AttributeError}, then try working with the \text
 
 \end{tipsp}
 
+This is what it could look like:
+
+\begin{center}\includegraphics[width=1\linewidth]{plot/01_python/hbars_reviews} \end{center}
+
 \hypertarget{visualization-with-maps}{%
 \subsection{Visualization with Maps}\label{visualization-with-maps}}
 
-This part will be the final and most advanced part of the EDA -- but also the most rewarding. AAnyone who knows the Airbnb website has probably also seen their map showing the location of all apartments. We can do the same! The only difference is that our data gives us even more options to show what interests us!
+This part will be the final and most advanced part of the EDA -- but also the most rewarding. Anyone who knows the Airbnb website has probably also seen their map showing the location of all apartments. We can do the same! The only difference is that our data gives us the option to show what interests us ;)
 
 To reduce complexity, use the more minor data set filtered in the third task with the 200 most frequently reviewed apartments for this task.
 
-We can then place actual objects on the map. Plot the 200 top rated listings on the map. If you have not solved task 3 yet, simply select 200 listings according to other criteria or at random to solve the task. It could look like this:
-
-\begin{center}\includegraphics[width=1\linewidth]{plot/4_1_map_top200_simple} \end{center}
+If you have not solved task 3 yet, simply select 200 listings according to other criteria or at random to solve the task.
 
 \begin{tips}r
-There are different ways of creating a map with \texttt{R}, but the following tips will be about the \texttt{ggmap} package.
+There are different ways of creating a map with \texttt{R}. Though our example was plotted using the \texttt{leaflet} package, the following tips will be about the \texttt{ggmap} package to give you a more gentle introduction.
 
 Before you can download map material via an API interface, you have to define the corners of the map as coordinates.
 
@@ -826,7 +799,7 @@ height <- max(...) - min(...)
 width <- max(...) - min(...)
 \end{verbatim}
 
-You can then define a vector, which you can call \texttt{berlin\_borders}, for example. It is used to define the values for the edges of the map. You can add a small safety margin to the respective minima or maxima of the coordinates. Play around with the factors later to find a good section of the map.
+You can then define a vector, which you can call \texttt{berlin\_borders}, as we did for our example city Berlin. It is used to define the values for the edges of the map. You can add a small safety margin to the respective minima or maxima of the coordinates. Play around with the factors later to find a good section of the map.
 
 \begin{verbatim}
 berlin_borders <- c(bottom = min(listing_top200$latitude) - 0.1 * height,
@@ -836,60 +809,85 @@ right = max(listing_top200$longitude) + 0.1 * width)
 \end{verbatim}
 
 Then we download the defined map section from the service provider Stamen Maps with the \texttt{get\_stamenmap()} function and save it in an object.
+Now you just need to plot it!
 
 \end{tips}
 
 \begin{tipsp}p
 
-We are going to use yet another library, this one is called Folium. For this task you will need to work with its documentation which you can find online.
+We are going to use yet another library, this one is called Folium. For this task you need to work with its documentation which you can find online.
 
-Make sure the folium package is installed: You can install it directly from within your notebook by executing \texttt{!pip\ install\ folium}.
-
-Use folium's \texttt{Circle} to draw a circle for each apartment at its location coordinates. You will need to use a for-loop to iterate over all 200 apartments.
+Use folium's \texttt{Circle} to draw a circle for each apartment at its location coordinates. You will need to implement a for-loop to iterate over all 200 apartments.
 
 \begin{verbatim}
 # Initiate the map
 m = folium.Map(
-    location=[52.5, 13.4],
-    tiles='Stamen Toner',
-    zoom_start=11
+    location=[52.5, 13.4],  # Berlin Coordinates
+    zoom_start=11,
+    tiles='Stamen Toner'  # Map Style
 )
 
 # Use a for-loop to plot circles
-for lat, long in ... :
+for idx, row in df.iterrows() :
     # Your code here
 
 m  # Displays the map
 \end{verbatim}
 
+
 \end{tipsp}
 
-In addition to the coordinates, there is a lot of information about each listing in our data. This time plot the apartments in different colors.
-
-Use the city districts as a distinguishing feature (also to easily see whether the district assignment actually works). It is sufficient if you implement the same plot as before, only with different colors. However, this is an example of how a more advanced plot can look like:
+The map could look like this:
 
 \begin{center}\includegraphics[width=1\linewidth]{plot/01_python/map_circles} \end{center}
 
+In addition to the coordinates, there is a lot of information about each listing in our data. This time, implement a pop-up window to display more details about each Airbnb apartment.
+
 \begin{tips}r
-This plot was created with \texttt{ggmaps} and the additional package \texttt{concaveman} and its function \texttt{geom\_mark\_hull()}, which draws polygons around a cluster of coordinates.
+This time the plot was created with \texttt{leaflet}, why don't you try to find information on the package online?
+
+You can create a basic map with leaflet and add additional layers by following these simple steps:
+
+\begin{verbatim}
+m <- leaflet() %>%
+  addTiles() %>% 
+  addMarkers(lng= , 
+             lat= , 
+             popup= )
+           
+\end{verbatim}
+
+Does \texttt{lng} and \texttt{lat} look familiar to you from a previous plot?
+
+\texttt{popup}is where the magic is at! Can you make the map show you listings ID, type, price, review score, and number of reviews?
 
 \end{tips}
 
 \begin{tipsp}p
-The plot shown has been created in \texttt{R}. In \texttt{Python} you'll simply color the dots differently for each neighborhood.
 
-The obvious solution for this task would be to filter the data frame by a neighborhood and to create a for loop plotting the circles for that specific neighborhood. Then, repeat this process for all the other neighborhoods using different colors.
+Once again, you will need to loop through each apartment.
 
-This approach would lead to repeating (and thus, bad looking) code: Can you find a better way?
+This time however, the body looks more like this:
+
+\begin{verbatim}
+folium.Marker(
+    [longitude, latitude], 
+    popup="<i>some text here</i>", 
+    tooltip='click me!'
+).add_to(m)
+\end{verbatim}
+
 
 \end{tipsp}
 
-For some analyzes it is easier if you don't just see points, but their distributions on a map. For example, to see where there are many apartments in a small space, you can display the apartment density. It could look like this:
+The map should now look similar to this one:
 
 \begin{center}\includegraphics[width=1\linewidth]{plot/01_python/map_popup} \end{center}
 
+For some analyzes it is easier if you don't just see points, but their distributions on a map. For example, to see where there are many apartments in a small space, you can display the apartment density. Why not plot a heatmap?
+
 \begin{tips}r
-To create such a two-dimensional density plot you can use the \texttt{geom\_density2d()} and \texttt{stat\_density2d()} packages on the map. If you don't know exactly how the individual arguments should be filled, you can always google for more help.
+You now are hopefully familiar with two packages that can plot maps. If you want to use \texttt{ggmap} to create such a two-dimensional density plot you can use the \texttt{geom\_density2d()} and \texttt{stat\_density2d()} packages on the map. If you don't know exactly how the individual arguments should be filled, you can always google for more help.
 
 \end{tips}
 
@@ -903,9 +901,9 @@ No hints or tips here - it's up to you to study the documentation for folium's h
 
 Be creative.
 
-With the available data you could do tons more stuff. You could further go into a more detailed price analysis, or you could also come up with other plots (e.g., distribution of room types per neighbourhood, or even number of hosts who join airbnb per month!). Also compare the results with your teammates!
+With the available data you could do tons more stuff. You could try to find the perfect listing that suits your needs and plot an availability calendar for that listing, perfect for your holiday planning! You could further go into a more detailed price analysis, or you could also come up with other plots (e.g., distribution of room types per neighbourhood, or even number of hosts who join airbnb per month!). Also compare the results with your teammates! How do things look like in other cities and compare to yours?
 
-\textbf{Congratulations} -- based on your work with basic data transformations and many visualizations, you now have a solid understanding of the Airbnb offers in Berlin. With this, you have now successfully completed the first part of the project! If you are in the beginner group, your minimum requirements are hereby met. Nevertheless, we strongly recommend that you also have a look at the following part. There you'll be developing methods to predict the price of an apartment! Sounds exciting, doesn't it?
+\textbf{Congratulations} -- based on your work with basic data transformations and many visualizations, you now have a solid understanding of the Airbnb offers in your city! With this, you have now successfully completed the first part of the project! If you are in the beginner group, your minimum requirements are hereby met. Nevertheless, we strongly recommend that you also have a look at the following part. There you'll be developing methods to predict the price of an apartment! Sounds exciting, doesn't it?
 
 \newpage
 
@@ -929,18 +927,12 @@ Here is a brief description of what you need each of the data sets for:
   \emph{train.csv} (60 \%): You use this training data set to train your model. The model can learn the relationships between the variables based on the training data set that contains both, the variables needed to predict the prices and also the actual prices themselves.
 \item
   \emph{test.csv} (30 \%): With this test data set you can test how well your model predicts the price using data that has not been seen before. This will help you for example with recognizing under- or overfitting.
-\item
-  \emph{val.csv} (10 \%): We have removed the \texttt{price} variable in this validation data set. At the end you apply your best model to it and send us your predictions for the variable \texttt{price}.
 \end{itemize}
-
-We then compare these with the actual values (only known to us) with the help of the \(RMSE\) and will then choose the best model across all groups.
 
 Note that some adjustments are necessary in these three data sets. For example, all price variables are marked with a \$ sign. As before, we need to remove these in order to be able to transform the values to a numeric format. Always keep in mind that you have to apply all transformations to all three data sets, otherwise you will not be able to apply your trained model to the test and validation data sets.
 
 \hypertarget{examine-the-correlation-between-the-variables-train}{%
 \subsection{Examine the Correlation Between the Variables (train)}\label{examine-the-correlation-between-the-variables-train}}
-
-First load the \texttt{train.csv} data set from the \emph{Full Data Set} folder into your workspace. Now look at the variable names and the first entries to decide which variables could be useful for predicting the price. Select these (limit yourself to no more than 20 variables at first) plus \texttt{price} and save it in a new data frame.
 
 How are the individual variables related to each other? In other words, to what extent do the variables in the data set correlate with one another? Finding this out is extremely important for deciding which model specification to use later. A good place to start is to create a correlation matrix:
 
@@ -1006,6 +998,7 @@ You can easily include such LaTeX tables in your RMarkdown document with the \te
 
 \begin{center}\includegraphics[width=1\linewidth]{plot/5_table} \end{center}
 
+
 \end{tips}
 
 \hypertarget{from-training-to-testing-making-predictions}{%
@@ -1039,6 +1032,7 @@ sqrt(mean((predicted - actual)^2, na.rm = TRUE))
 }
 \end{verbatim}
 
+
 \end{tips}
 
 \begin{tipsp}p
@@ -1052,6 +1046,7 @@ from sklearn.metrics import mean_squared_error
 # Function that returns Root Mean Squared Error while ignoring NaNs
 rmse = mean_squared_error(y_test, predicted_price, squared=False)
 \end{verbatim}
+
 
 \end{tipsp}
 
@@ -1068,28 +1063,6 @@ You can also get a noticeable gain in predictive power by modifying existing var
 included in our data set. You can write a simple function that uses the two coordinate variables to calculate the distance to the center of Berlin and appends this to the data set as a new variable.
 
 Always compare the \(RMSE\) of your advanced models with each other, as well as with the benchmark regression model from before.
-
-Did you find your best model? Then predict prices with your winning model as above -- but this time on the validation data set \texttt{val.csv}.
-
-Attach a \texttt{.csv} dataset in the following format with only the two variables \texttt{id} and \texttt{predicted\_price} as an attachment to your project submission.
-
-\begin{tips}r
-
-You can do this by adding the two vectors \texttt{id} and \texttt{predicted\_price} together and saving them as a \texttt{.csv} file.
-
-\begin{verbatim}
-submission <- cbind(val$id, predicted_price_val)
-write.csv(submission, "submission_<<TEAM NAME>>.csv", row.names=FALSE)
-\end{verbatim}
-
-\end{tips}
-
-\begin{tipsp}p
-You may need to do some mapping operations between the train.csv data and the predictions to get to the data frame with id and predicted prices.
-
-Similarly as with the \texttt{pd.read\_csv(path/to/file.csv)} method to load data, you can also write data with the \texttt{df.to\_csv(file.csv)} method.
-
-\end{tipsp}
 
 Congratulations! You've made it to the end of your TechAcademy Data Science project. After visualizing the data in the first part, you've also set up predictive models in this section. If you stuck around until this part and managed to code the better part of the exercises, you've definitely earned your certificate! We hope you had fun learning Data Science with this data set and you enjoyed it -- at least the parts where you didn't get stuck forever because of some unexplainable coding error. Don't forget to send your project results and the prediction-csv file you just generated to our project submission email address before the deadline.
 
@@ -1198,16 +1171,19 @@ At the end of your TechAcademy semester, you've successfully coded your way thro
 
 \hypertarget{version-control-with-git}{%
 \subsubsection*{\texorpdfstring{Version Control with \href{https://github.com/}{Git}}{Version Control with Git}}\label{version-control-with-git}}
+\addcontentsline{toc}{subsubsection}{Version Control with \href{https://github.com/}{Git}}
 
 If you're serious about data science, you will need Git. Better learn it early and start enjoying and appreciating it before it's too late and you're pressured into learning it on the fly! Every project you do should be accompanied by a VCS (Version Control System) like Git. Regardless if you're working alone or with a big group of developers. No matter whether you write ten lines of code or a really complex program. With Git, you can keep track of all your changes. It's like a Dropbox/Google Drive for developers, but way better. Pro-Tip: Get free GitHub Pro as a Student with the \href{https://education.github.com/pack}{GitHub Student Developer Pack}. Besides all the perks of GitHub Pro, you'll also free access to many other great tools. See the respective tutorials on how to set up your Git workflow.
 
 \hypertarget{advice-for-non-traditional-data-scientists}{%
 \subsubsection*{\texorpdfstring{Advice for \href{https://blog.shotwell.ca/posts/learning_data_science/}{Non-Traditional Data Scientists}}{Advice for Non-Traditional Data Scientists}}\label{advice-for-non-traditional-data-scientists}}
+\addcontentsline{toc}{subsubsection}{Advice for \href{https://blog.shotwell.ca/posts/learning_data_science/}{Non-Traditional Data Scientists}}
 
 Important advice from Gordon Shotwell, a former lawyer, on what it takes to have a successful data science career coming from a non-computer science background. Extremely encouraging and helpful read on what you should and shouldn't do to reach that goal.
 
 \hypertarget{learn-from-great-data-scientists-on-kaggle}{%
 \subsubsection*{\texorpdfstring{Learn from Great Data Scientists on \href{https://www.kaggle.com/}{Kaggle}}{Learn from Great Data Scientists on Kaggle}}\label{learn-from-great-data-scientists-on-kaggle}}
+\addcontentsline{toc}{subsubsection}{Learn from Great Data Scientists on \href{https://www.kaggle.com/}{Kaggle}}
 
 Kaggle is a platform that hosts data science challenges. The great thing about it is that you can browse through many clever solutions to tricky machine learning tasks. And of course, you can also join the competition and measure your predictions with others. There are plenty of both Python and R notebooks.
 
