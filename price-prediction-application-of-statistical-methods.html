@@ -100,15 +100,9 @@
 <li class="chapter" data-level="4.1.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#days-lineplot"><i class="fa fa-check"></i><b>4.1.2</b> 365 Days Lineplot</a></li>
 <li class="chapter" data-level="4.1.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#calendar-plot"><i class="fa fa-check"></i><b>4.1.3</b> Calendar Plot</a></li>
 </ul></li>
-<<<<<<< HEAD
 <li class="chapter" data-level="4.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#correlation-coefficient-and-plot"><i class="fa fa-check"></i><b>4.2</b> Correlation Coefficient and Plot</a></li>
 <li class="chapter" data-level="4.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualize-individual-airbnb-offers-with-the-listings-data-set"><i class="fa fa-check"></i><b>4.3</b> Visualize individual Airbnb Offers with the Listings Data Set</a></li>
 <li class="chapter" data-level="4.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#analyzing-number-of-reviews-per-neighborhood"><i class="fa fa-check"></i><b>4.4</b> Analyzing Number of Reviews per Neighborhood</a><ul>
-=======
-<li class="chapter" data-level="4.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#correlation-coefficient-and-plot-availability-price"><i class="fa fa-check"></i><b>4.2</b> Correlation Coefficient and Plot (availability &amp; price)</a></li>
-<li class="chapter" data-level="4.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualize-individual-airbnb-offers-with-the-listings-dataset"><i class="fa fa-check"></i><b>4.3</b> Visualize individual Airbnb offers with the listings dataset</a></li>
-<li class="chapter" data-level="4.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#analyzing-number-of-reviews-per-neighbourhood"><i class="fa fa-check"></i><b>4.4</b> Analyzing number of Reviews per Neighbourhood</a><ul>
->>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <li class="chapter" data-level="4.4.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#your-first-barplot"><i class="fa fa-check"></i><b>4.4.1</b> Your First Barplot</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualization-with-maps"><i class="fa fa-check"></i><b>4.5</b> Visualization with Maps</a></li>
@@ -159,7 +153,6 @@
 <p>We use the Airbnb listings data set, which contains features about apartments including prices. When we train our model with the data, we need to estimate how well our model predicts prices for listings it has never seen before. Therefore we split our data set into two parts - a train and a test set.</p>
 <p>Here is a brief description of what you need each of the data sets for:</p>
 <ul>
-<<<<<<< HEAD
 <li><p><em>train data</em> (70 %): You use this training data set to train your model. The model can learn the relationships between the variables based on the training data set that contains both, the variables needed to predict the prices and also the actual prices themselves.</p></li>
 <li><p><em>test data</em> (30 %): With this test data set you can test how well your model predicts the price using data that has not been seen before. This will help you for example with recognizing under- or overfitting.</p></li>
 </ul>
@@ -175,14 +168,6 @@ X_train, X_test, y_train, y_test = train_test_split(...)</code></pre>
 </div>
 <div id="examine-correlation-between-the-variables-train" class="section level2">
 <h2><span class="header-section-number">5.1</span> Examine Correlation Between the Variables (train)</h2>
-=======
-<li><p><em>train.csv</em> (60 %): You use this training data set to train your model. The model can learn the relationships between the variables based on the training data set that contains both, the variables needed to predict the prices and also the actual prices themselves.</p></li>
-<li><p><em>test.csv</em> (30 %): With this test data set you can test how well your model predicts the price using data that has not been seen before. This will help you for example with recognizing under- or overfitting.</p></li>
-</ul>
-<p>Note that some adjustments are necessary in these three data sets. For example, all price variables are marked with a $ sign. As before, we need to remove these in order to be able to transform the values to a numeric format. Always keep in mind that you have to apply all transformations to all three data sets, otherwise you will not be able to apply your trained model to the test and validation data sets.</p>
-<div id="examine-the-correlation-between-the-variables-train" class="section level2">
-<h2><span class="header-section-number">5.1</span> Examine the Correlation Between the Variables (train)</h2>
->>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <p>How are the individual variables related to each other? In other words, to what extent do the variables in the data set correlate with one another? Finding this out is extremely important for deciding which model specification to use later. A good place to start is to create a correlation matrix:</p>
 <p><img src="plot/5_1_ggpairs.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="tips r">

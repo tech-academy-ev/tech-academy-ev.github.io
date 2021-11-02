@@ -20,32 +20,18 @@ visualizing-apartment-availability
 import-clean-and-transform-the-data
 days-lineplot
 calendar-plot
-<<<<<<< HEAD
 correlation-coefficient-and-plot
 visualize-individual-airbnb-offers-with-the-listings-data-set
 analyzing-number-of-reviews-per-neighborhood
-=======
-correlation-coefficient-and-plot-availability-price
-visualize-individual-airbnb-offers-with-the-listings-dataset
-analyzing-number-of-reviews-per-neighbourhood
->>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 your-first-barplot
 visualization-with-maps
 surprise-us-with-at-least-one-more-plot
 price-prediction-application-of-statistical-methods
-<<<<<<< HEAD
 examine-correlation-between-the-variables-train
 first-predictions-with-simple-regression-models-train
 from-training-to-testing-making-predictions
 apply-advanced-machine-learning-algorithms
 exercise-checklist
-=======
-examine-the-correlation-between-the-variables-train
-first-predictions-with-simple-regression-models-train
-from-training-to-testing-making-predictions
-apply-advanced-machine-learning-algorithms
-excercise-checklist
->>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 whats-next-in-your-data-science-career
 data-science-in-general
 r
