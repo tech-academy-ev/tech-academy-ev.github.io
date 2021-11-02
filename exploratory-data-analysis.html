@@ -100,9 +100,15 @@
 <li class="chapter" data-level="4.1.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#days-lineplot"><i class="fa fa-check"></i><b>4.1.2</b> 365 Days Lineplot</a></li>
 <li class="chapter" data-level="4.1.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#calendar-plot"><i class="fa fa-check"></i><b>4.1.3</b> Calendar Plot</a></li>
 </ul></li>
+<<<<<<< HEAD
 <li class="chapter" data-level="4.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#correlation-coefficient-and-plot"><i class="fa fa-check"></i><b>4.2</b> Correlation Coefficient and Plot</a></li>
 <li class="chapter" data-level="4.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualize-individual-airbnb-offers-with-the-listings-data-set"><i class="fa fa-check"></i><b>4.3</b> Visualize individual Airbnb Offers with the Listings Data Set</a></li>
 <li class="chapter" data-level="4.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#analyzing-number-of-reviews-per-neighborhood"><i class="fa fa-check"></i><b>4.4</b> Analyzing Number of Reviews per Neighborhood</a><ul>
+=======
+<li class="chapter" data-level="4.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#correlation-coefficient-and-plot-availability-price"><i class="fa fa-check"></i><b>4.2</b> Correlation Coefficient and Plot (availability &amp; price)</a></li>
+<li class="chapter" data-level="4.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualize-individual-airbnb-offers-with-the-listings-dataset"><i class="fa fa-check"></i><b>4.3</b> Visualize individual Airbnb offers with the listings dataset</a></li>
+<li class="chapter" data-level="4.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#analyzing-number-of-reviews-per-neighbourhood"><i class="fa fa-check"></i><b>4.4</b> Analyzing number of Reviews per Neighbourhood</a><ul>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <li class="chapter" data-level="4.4.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#your-first-barplot"><i class="fa fa-check"></i><b>4.4.1</b> Your First Barplot</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#visualization-with-maps"><i class="fa fa-check"></i><b>4.5</b> Visualization with Maps</a></li>
@@ -165,6 +171,7 @@ Either way, when importing Airbnb data, you can use the links to the respective 
 </div>
 <div id="visualizing-apartment-availability" class="section level2">
 <h2><span class="header-section-number">4.1</span> Visualizing Apartment Availability</h2>
+<<<<<<< HEAD
 <p>Imagine being a tourist on a budget.
 First things first, you might want to check for periods when apartments (or, Airbnbs) are available for booking on the market.
 Remember the basics of economics?
@@ -172,6 +179,9 @@ A lower supply of a product on the market usually comes with higher prices (all 
 Vice versa, a higher supply of a product might come with a lower price.
 That is precisely what you want if you are on a budget!
 Explore the data set looking for periods with high availability and find out later whether that basic economic idea holds in the Airbnb context.</p>
+=======
+<p>Imagine being a tourist on a budget. First things first, you might want to check for periods when apartments (or, Airbnbs) are available for booking on the market. Remember the basics of economics? A lower supply of a product on the market usually comes with higher prices (all else equal). Vice versa, a higher supply of a product might come with a lower price. That is precisely what you want if you are on a budget! Explore the data set looking for periods with high availability and find out later whether that basic economic idea holds in the Airbnb context.</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <div id="import-clean-and-transform-the-data" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Import, Clean and Transform the Data</h3>
 <p>In this chapter, you will apply the knowledge that you gained throughout the semester to real-world data.
@@ -180,6 +190,7 @@ The exercises will cover typical problems that you usually encounter when analyz
 To get a peek at the data you’ll be working with, output the first/last few rows.
 Also, compute some basic descriptive statistics (e.g., count, mean, and standard deviation) and determine the column’s data types.</p>
 <div class="tips r">
+<<<<<<< HEAD
 <p>First, load the necessary packages/libraries that you intended to use for your analysis.</p>
 <p>Then, load the data set from your folder structure into the workspace.
 Import the calendar data set into your workspace and name the object accordingly.
@@ -188,6 +199,11 @@ Use, for example:</p>
 <p>Now get an overview of the data set.
 How is it structured, and which variables does it contain?
 You can use the following functions, for example:</p>
+=======
+<p>First the data set has to be loaded from your folder structure into the workspace. Import the calendar data set into your workspace and name the object accordingly.</p>
+<p><code>calendar &lt;- read.csv("calendar.csv")</code></p>
+<p>Now get an overview of the data set. How is it structured and which variables does it contain? You can use the following functions, for example:</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <p><code>head(calendar)</code><br />
 <code>str(calendar)</code><br />
 <code>summary(calendar)</code></p>
@@ -198,11 +214,16 @@ Use the same pandas method used to import CSV data on Datacamp to import CSV dat
 <p>Take a look at the first rows of your data frame and print some descriptive statistics with the pandas methods <code>.head()</code> and <code>.describe()</code>.
 Also, find out the data types for each column: Are values in the price column stored as numbers?</p>
 </div>
+<<<<<<< HEAD
 <p>Visualization is one of the most helpful methods to get a feeling for the relation of the various variables of the data set.
 As already mentioned, this process is called <em>Exploratory Data Analysis</em> (EDA).</p>
 <p>Before starting with that, we first have to clean the data so that the functions can process the data set correctly.
 You will have to do that quite often in the field of Data Science since the data very often comes in an unusable format.
 For example, in our case, the values in the price column are not stored as a numeric data type – this becomes an issue when performing math operations on such columns.</p>
+=======
+<p>Visualization is one of the most helpful methods to get a feeling for the relation of the various variables of the data set. As already mentioned, this process is called <em>Exploratory Data Analysis</em> (EDA).</p>
+<p>Before we can start with that, we first have to clean the data such that the functions can process the data set properly. You will have to do that quite often in the field of Data Science, since the data very often comes in an unusable format. In our case, for example, the values in the price column are not stored as a numeric data type – this becomes an issue when performing math operations.</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <div class="tips r">
 <p>In order for <code>R</code> to process this, we need to remove a character from the observations and convert the variable into a numeric format.
 You can use the functions <code>str_remove_all()</code> or <code>gsub()</code> together with <code>as.numeric()</code> for this.</p>
@@ -213,6 +234,7 @@ Remember the <code>as.numeric()</code> function?
 <code>R</code> has a similar function to convert variables to a date format.</p>
 </div>
 <div class="tipsp python">
+<<<<<<< HEAD
 <p>To remove a character in a column’s cells use pandas’ <code>.replace()</code> method.
 Similarly, convert the data to a different type with <code>.astype()</code> (Hint: You might need to apply the replace method twice on the price column before converting).</p>
 <p>Note that the column indicating apartment availability contains two values, namely <code>f</code> and <code>t</code>.
@@ -222,6 +244,12 @@ Replace <code>f</code> and <code>t</code> with the associated boolean values <co
 However, this goal is still not possible since there is an entry for each apartment in the upcoming 365 days.
 And another related variable that shows us whether the apartment is available or not on each of those days is present too.
 The transformed data set should summarize this information and have only one entry for each day that tells us the aggregated number of available Airbnbs in the city.</p>
+=======
+<p>To remove a character in a column’s cells use pandas’ <code>.replace()</code> method. Similarly, convert the data to a different type with <code>.astype()</code> (Hint: You might need to apply the replace method twice on the price column before converting).</p>
+<p>Note that the column indicating apartment availability contains two values, namely “f” and “t”. Replace “f” and “t” with the associated boolean values <code>FALSE</code> and <code>TRUE</code>.</p>
+</div>
+<p>Our goal now is to show the number of Airbnb apartments that are available over the next year in a simple line plot. This is still not possible, however, since there is an entry for each apartment for each of the upcoming 365 days and another related variable that shows us whether the apartment is available or not on each of those days. The transformed data set should summarize this information and should have only one entry for each day that tells us the aggregated number of available Airbnbs in the city.</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <div class="tips r">
 <p>The <code>R</code> package <code>dplyr</code> is the first choice for this type of transformation task.
 If you haven’t heard of it yet, take the respective DataCamp course or the DataCamp course on Exploratory Data Analysis.</p>
@@ -230,12 +258,18 @@ You can, of course, name the data frame however you wish.</p>
 <p>If you need further help, you can also use the <code>dplyr</code> <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Cheat Sheet</a> for this task, on which you can visually see such transformations.</p>
 </div>
 <div class="tipsp python">
+<<<<<<< HEAD
 <p>To understand this step, remember that you converted the values in the <code>available</code> column to be of type <code>bool</code>.
 In Python, the boolean value <code>True</code> is equal to <code>1</code>, while <code>False</code> is equal to <code>0</code>.
 Thus, <code>True + True + False</code> is equal to <code>2</code> (you can try this out by executing <code>print(True + True + False)</code>).
 So, to get the number of available apartments, you could simply sum the (boolean) values in the <code>available</code> column!</p>
 <p>But before doing so, make sure to group the data frame by date with <code>.groupby()</code> in combination with the aggregation method <code>.sum()</code> as you need to get the number of available apartments for each date.</p>
 <p>The pandas <a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Cheat Sheet</a> might be of help here - feel free to make use of it.</p>
+=======
+<p>To understand this step, remember that you converted the values in the “available” column to be of type <code>bool</code>. In Python, the boolean value True is equal to 1, while False is equal to 0. Thus, (True + True + False) is equal to 2 (you can try this out by executing <code>print(True + True + False)</code>). So, to get the number of available apartments, you could simply sum the (boolean) values in the availability column!</p>
+<p>But before doing so, make sure to group the data frame by date with <code>.groupby()</code> in combination with the aggregation method <code>.sum()</code> as you need to get the number of available apartments for each date.</p>
+<p>The pandas cheat sheet might be of help here - feel free to make use of it.</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 </div>
 </div>
 <div id="days-lineplot" class="section level3">
@@ -252,9 +286,13 @@ We highly recommend getting comfortable with using the<code>ggplot2</code> packa
 <p>Having the data in the correct format, we can now start plotting a simple line graph.
 For this, you can use matplotlib’s <code>plt.plot()</code>.</p>
 </div>
+<<<<<<< HEAD
 <p>Looking at the line plot above, you can see a clear pattern for different dates.
 There are distinct drops in the availability of Airbnb apartments. 
 <strong>One task for your project is to think about a potential cause behind this pattern: Is there one?</strong></p>
+=======
+<p>Looking at the line plot, you can see a clear pattern with respect to different dates. There are distinct drops in the availability of the Airbnb apartments. <strong>One task for your project is to think about a potential cause behind this pattern: Is there one?</strong></p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 </div>
 <div id="calendar-plot" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Calendar Plot</h3>
@@ -271,6 +309,7 @@ Let’s see:</p>
 </div>
 </div>
 </div>
+<<<<<<< HEAD
 <div id="correlation-coefficient-and-plot" class="section level2">
 <h2><span class="header-section-number">4.2</span> Correlation Coefficient and Plot</h2>
 <p>Now that you are confident that there are some distinct patterns in the data set, you might be willing to quantify your suspicion.
@@ -282,11 +321,31 @@ For that purpose, calculate the correlation coefficient (<em>r</em>) between <co
 <p>For example, this task could look like:</p>
 <p><img src="plot/01_python/corr_availability_price.png" width="100%" style="display: block; margin: auto;" /></p>
 <p><strong>Answer:</strong> “The correlation coefficient shows …”.</p>
+=======
+<div id="correlation-coefficient-and-plot-availability-price" class="section level2">
+<h2><span class="header-section-number">4.2</span> Correlation Coefficient and Plot (availability &amp; price)</h2>
+<p>Now that you are certain that there are some distinct patterns, you are willing to quantify your suspicion:</p>
+<p>Calculate the correlation coefficient between availability &amp; price and plot both variables to confirm your intuition. Regarding visualization, you could choose between a) line plot (boring) or b) scatter plot for example. Please write a short sentence explaining what the correlation coefficient measures in this context.</p>
+<div class="tips r">
+<p>Have a look at <code>ggplot2</code> and try plotting a scatter plot with <code>geom_point</code>. You can calculate the correlation using the stats function <code>cor(x,y)</code>.</p>
+</div>
+<div class="tipsp python">
+<p>You can use matplotlib’s scatter plot for plotting and pandas’s <code>.corr()</code> method to compute the correlation coefficient.</p>
+</div>
+<p><img src="plot/01_python/corr_availability_price.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>Answer:</strong> “The Correlation Coefficient shows …”.</p>
+</div>
+<div id="visualize-individual-airbnb-offers-with-the-listings-dataset" class="section level2">
+<h2><span class="header-section-number">4.3</span> Visualize individual Airbnb offers with the listings dataset</h2>
+<p>Can we use the mean price of a neighbourhood to measure popularity? Could be. In the next section you will compute the average price for each neighbourhood and since, as an (aspiring) Data Scientist you love numbers and stats, you also want to compute the price variances for these neighborhoods.</p>
+<p>Start off by importing the listings dataset. As in the first task, you will need to clean the price column. Done that, we can take a closer look at the price structure of the various neighbourhoods. First of all, we would like to know what the average price and the corresponding standard deviation is for each neighborhood. List the names of the different parts of the city as well as their <code>mean</code> and the <code>sd</code>.</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <div class="tips r">
 <p>Have a look at <code>ggplot2</code> and plot a scatter plot with <code>geom_point()</code>.
 Use the stats function <code>cor(x,y),</code> for example, to calculate the correlation coefficient between two variables.</p>
 </div>
 <div class="tipsp python">
+<<<<<<< HEAD
 <p>You can use matplotlib’s scatter plot for plotting and pandas’s <code>.corr()</code> method to compute the correlation coefficient between two variables.</p>
 </div>
 </div>
@@ -299,10 +358,16 @@ First, you will need to clean the <code>price</code> column.
 After that, we can take a closer look at the price structure of the various neighborhoods.</p>
 <p>Second, we would like to know the average price and corresponding standard deviation for each neighborhood.
 Please list the names of the different parts of the city and their <code>mean</code> and the <code>sd</code> for that purpose.</p>
+=======
+<p>Once again you can use the groupby method to group by neighborhood and apply an aggregation function for calculating the standard deviation. A very similar function exists for caluclating the mean values. Filter both data frames by the price column.</p>
+</div>
+<p>We now want to visually compare the price distribution for the on average most expensive district with the on average least expensive district. For this, you have to think about the different types of plots that you have gotten to know in your courses and have to find the plot type that is most suited for this type of visualization. Once you have created the diagram, you will probably have to filter out some of the outliers with extremely high prices in order to get a meaningful plot.</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <div class="tips r">
 <p>For this task, you can reuse <code>dplyr</code>-functions like <code>group_by()</code> or <code>summarize()</code>.</p>
 </div>
 <div class="tipsp python">
+<<<<<<< HEAD
 <p>Once again, you can use the .<code>groupby()</code> method to group by neighborhood and apply an aggregation function for calculating the standard deviation.
 A very similar function exists for calculating the mean values.
 Filter both data frames by the price column.</p>
@@ -340,16 +405,37 @@ Our goal now is to count the number of reviews for each apartment and to keep th
 Since we can also find the <code>ID</code> in the <code>listings</code> data set, we can use that variable to merge the two data sets.</p>
 <p>First, load your city’s <code>reviews</code> data set into your workspace and take a closer look at it with the familiar functions.
 Afterward, count the number of reviews per apartment.</p>
+=======
+<p>One way to find the on average most expensive neighborhood is to simply sort the mean price column in descending order.</p>
+<p>For plotting: The Matplotlib documentation is a great source of inspiration with many examples including code that generated them.</p>
+<p>Note: If you do not want to remove outliers, the plot could end up looking very… strange. In this case, it is best to create two different plots, i.e. one for each neighbourhood.</p>
+</div>
+<p><img src="plot/01_python/box_plots.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>But wait! Until now we focussed much on prices… What about customer preferences? Up next, we will use the average number of reviews as an indicator for ‘hotness’ of an area in your city.</p>
+</div>
+<div id="analyzing-number-of-reviews-per-neighbourhood" class="section level2">
+<h2><span class="header-section-number">4.4</span> Analyzing number of Reviews per Neighbourhood</h2>
+<p>In the previous part you got to know and visualized the listings data set. However, one important piece of information is not included in this data that we could use to measure popularity: How about using the number of reviews?</p>
+<p>We first start off by computing the average number of reviews per apartment. Afterwards, we will do the same for each neighborhood. Computing the number of reviews for each apartment could lead to a very important feature for price prediction.</p>
+<p>Fortunately, we have another data set for each city, <code>reviews</code>, in which the apartment ID and the date are saved for each individual review. Our goal now is to count the number of reviews for each individual apartment and to save them. Since we can also find the ID in the listings data set, we can use this variable to merge the two data sets.</p>
+<p>First load your city’s <code>reviews</code> data set into your workspace and take a closer look at it with the familiar functions. Afterwards, count the number of reviews per apartment.</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <div class="tips r">
 <p>This works with the <code>table()</code> function or with <code>group_by()</code> and <code>summarize()</code>.
 Note, however, that you still have to convert the result of the <code>table()</code> function into a <code>data.frame</code> format for further processing.</p>
 </div>
 <div class="tipsp python">
+<<<<<<< HEAD
 <p>Count the number of reviews per apartament (i.e. per “listing_id”) with the functions you’re already familiar with at this point.
 You can use the groupby argument <code>as_index=False</code> to avoid setting the column with listing ids as index, which might make live more easy when we merge data frames in later steps.</p>
 </div>
 <p>To merge <code>reviews</code> with the <code>listings</code> data set, you have to rename the newly generated variables in the new data set.
 Name the apartment <code>ID</code> analogous to the <code>listings</code> data set <code>id</code> and the number of reviews <code>n_reviews</code>.</p>
+=======
+<p>Count the number of reviews per apartament (i.e. per “listing_id”) with the functions you’re already familiar with at this point. You can use the groupby argument <code>as_index=False</code> to avoid setting the column with listing ids as index, which might make live more easy when we merge data frames in later steps.</p>
+</div>
+<p>To be able to merge with the listings data set, you have to rename the newly generated variables in the new data set. Name the apartment ID analogous to the <code>listings</code> data set <code>id</code>, as well as the number of reviews <code>n_reviews</code>.</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <div class="tips r">
 <p>You can do this task with the <code>rename()</code> function from the <code>dplyr</code> package.</p>
 </div>
@@ -365,6 +451,7 @@ Name the apartment <code>ID</code> analogous to the <code>listings</code> data s
 <div class="tipsp python">
 <p>Merge with <code>listings_reviews=pd.merge(dataframe1,dataframe2,left_on=...</code>.</p>
 </div>
+<<<<<<< HEAD
 <p>Now, look at the new data set.
 Does each ID have exactly one entry with the number of ratings?
 Reduce the data frame to the columns listing id, neighborhood, and the number of reviews to better understand your data.</p>
@@ -379,6 +466,15 @@ A bar plot is ideal for this.
 Feel free to try other types of visualizations best suited to answer this question.</p>
 <p>This is what the visualization could look like:</p>
 <p><img src="plot/01_python/hbars_reviews.png" width="100%" style="display: block; margin: auto;" /></p>
+=======
+<p>Now look at the new data set. Does each ID have exactly one entry with the number of ratings?
+Reduce the data frame to the columns listing id, neighbourhood, and number of reviews for having a better overview of your data.</p>
+<div id="your-first-barplot" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Your First Barplot</h3>
+<p>We now want to take a closer look at a smaller part of the data set: What do the most reviewed apartments have in common? Is it the location..?</p>
+<p>Extract the 200 most reviewed apartments. One approach for this is to first sort the data set in descending order according to <code>n_reviews</code> and then to extract the first 200 entries into a new data set.</p>
+<p>Now you can easily visualize the districts in which the 200 most frequently reviewed apartments are located. A bar plot is ideal for this. Feel free to try other types of plots that can be used to best answer this question.</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <div class="tips r">
 <p>The key commands that you can use for this within <code>ggplot()</code> are <code>geom_bar()</code> and <code>coord_flip()</code>.</p>
 </div>
@@ -388,10 +484,13 @@ If you chose to plot with matplotlib, you could use the <code>plt.barh()</code> 
 Additionally you might want to use methods like <code>.set_yticks()</code>, <code>.set_yticklabels()</code> and <code>.invert_yaxis()</code>.</p>
 <p>If Python throws you an <code>AttributeError</code>, then try working with the <code>plt.gca()</code> method.</p>
 </div>
+<p>This is what it could look like:</p>
+<p><img src="plot/01_python/hbars_reviews.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="visualization-with-maps" class="section level2">
 <h2><span class="header-section-number">4.5</span> Visualization with Maps</h2>
+<<<<<<< HEAD
 <p>This part will be the final and most advanced part of the EDA and the most rewarding.
 Anyone who knows the Airbnb website has probably also seen their map showing the location of all apartments.
 We can do the same!
@@ -400,6 +499,11 @@ The only difference is that our data gives us the option to show what interests 
 <p>If you have not solved that previous task yet, select 200 listings according to other criteria or at random to complete this task.</p>
 <p>Your map could look like this:</p>
 <p><img src="plot/01_python/map_circles.gif" width="100%" style="display: block; margin: auto;" /></p>
+=======
+<p>This part will be the final and most advanced part of the EDA – but also the most rewarding. Anyone who knows the Airbnb website has probably also seen their map showing the location of all apartments. We can do the same! The only difference is that our data gives us the option to show what interests us ;)</p>
+<p>To reduce complexity, use the more minor data set filtered in the third task with the 200 most frequently reviewed apartments for this task.</p>
+<p>If you have not solved task 3 yet, simply select 200 listings according to other criteria or at random to solve the task.</p>
+>>>>>>> 080dec35cdc54f5d753c17571d1bfbe1222a9d4e
 <div class="tips r">
 <p>There are different ways of creating a map with <code>R</code>.
 Although we plotted our example using the <code>leaflet</code> package, the following tips will be about the <code>ggmap</code> package as it is easier to use.</p>
