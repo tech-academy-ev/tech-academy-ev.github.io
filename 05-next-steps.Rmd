@@ -1,0 +1,100 @@
+---
+output:
+  pdf_document: default
+---
+\newpage
+  
+
+
+# What's Next in Your Data Science Career?
+
+At the end of your TechAcademy semester, you've successfully coded your way through a whole Data Science project. You liked what you did and would like bring your skills to the next level? Then this section provides you with many useful resources to deepen your knowledge in Data Science in general or Python and R in particular. The first section is useful for every aspiring Data Scientist, while the two following boxes introduce you to some language-specific resources. If you’ve come across some other useful materials that we didn’t mention here, feel free to contact us -- this list is far from complete! 
+
+## Data Science in General
+
+### Version Control with [Git](https://github.com/) {.unlisted .unnumbered}
+
+If you’re serious about data science, you will need Git. Better learn it early and start enjoying and appreciating it before it’s too late and you’re pressured into learning it on the fly! Every project you do should be accompanied by a VCS (Version Control System) like Git. Regardless if you’re working alone or with a big group of developers. No matter whether you write ten lines of code or a really complex program. With Git, you can keep track of all your changes. It’s like a Dropbox/Google Drive for developers, but way better. Pro-Tip: Get free GitHub Pro as a Student with the [GitHub Student Developer Pack](https://education.github.com/pack). Besides all the perks of GitHub Pro, you’ll also free access to many other great tools. See the respective tutorials on how to set up your Git workflow.
+
+### Advice for [Non-Traditional Data Scientists](https://blog.shotwell.ca/posts/learning_data_science/) {.unlisted .unnumbered}
+
+Important advice from Gordon Shotwell, a former lawyer, on what it takes to have a successful data science career coming from a non-computer science background. Extremely encouraging and helpful read on what you should and shouldn’t do to reach that goal.
+
+
+### Learn from Great Data Scientists on [Kaggle](https://www.kaggle.com/) {.unlisted .unnumbered}
+
+Kaggle is a platform that hosts data science challenges. The great thing about it is that you can browse through many clever solutions to tricky machine learning tasks. And of course, you can also join the competition and measure your predictions with others. There are plenty of both Python and R notebooks.
+
+## R
+
+:::: {.tips .r data-latex="r"}
+ 
+
+**Install R and RStudio Locally**
+
+RStudio.Cloud is great for getting started with R without having to worry about installing anything locally. Sooner or later you will have to install everything on your own computer. Here’s a [DataCamp tutorial](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu) on how to do that.
+
+
+**Version Control with Git**
+
+RStudio has a nice interface that lets you enjoy the perks of Git without ever having to touch the command line – sounds great, does it? Learn how to set up the Git & R workflow with [Happy Git with R](https://happygitwithr.com/).
+
+**[R Graph Gallery](https://www.r-graph-gallery.com/)**
+
+Get inspiration to take your plotting to the next level. Includes code to reproduce the plots.
+
+**Follow the R Master Himself and the R Community**
+
+Hadley Wickham was and continues to be extremely influential on the development of R and its rise to one of the most popular data science languages. He’s behind many tools that we taught you in this semester, especially the tidyverse (including great packages such as ggplot2 and dplyr). Follow him [on Twitter](https://twitter.com/hadleywickham) to get great R advice and keep up to speed with everything new to R. Following the many people behind R (not only Hadley) is a great way for acquiring deeper understanding of the language and its developments.
+
+**Join the [Campus useR Group in Frankfurt](https://www.meetup.com/r-frankfurt/)**
+
+There’s a quite active R community in Frankfurt that meets once a month. It’s open for students, professors, industry practitioners, journalists, and all people that love to use R. In those meetings, you’ll hear about other’s work, discuss new developments, and ask questions.
+
+
+**Listen to R Podcasts**
+Another great way to easily keep up with new developments in the Data Science/R community. Check out
+[Not So Standard Deviations](http://nssdeviations.com/) or [the R-Podcast](https://r-podcast.org/)
+
+::::
+
+## Python
+
+:::: {.tipsp .python data-latex="p"}
+
+
+**Install Python Locally**
+
+Until now you’ve only programmed using JupyterHub on the TechAcademy Server. A next step would be to install Python and Jupyter locally on your computer. This [link](https://docs.anaconda.com/anaconda/install/) contains the necessary information on how to install the software on Windows, iOS or Linux.
+
+
+**Choosing the Right Editor**
+
+Using Jupyter is especially useful for short data analyses. But sometimes you want to write longer scripts in Python. In these cases, it is often more convenient to use a code editor instead of Jupyter. [This tutorial](https://realpython.com/learning-paths/perfect-your-python-development-setup/) highlights the positive aspects of such an editor and how to choose the right one for you. Pro-Tip: Also check out the other tutorials on [Real Python](https://realpython.com/) and check out the Community Version of "PyCharm" which is the most common Python IDE (Integrated Development Environment. 
+
+
+**[Python Graph Gallery](https://python-graph-gallery.com/)**
+
+Get inspiration to take your plotting to the next level. Includes code to reproduce the plots.
+
+
+**More Advanced Python Concepts**
+
+You know the basic data structures in Python like lists and dictionaries. What are the next steps to improve your knowledge? [This website](https://book.pythontips.com/en/latest/index.html) gives good explanations for slightly more advanced concepts which can be very useful from time to time.
+
+
+**A Deeper Understanding**
+
+If you want to get a deeper understanding of the Python programming language and into typical algorithms which are used in the field of Data Science, this [free book](https://github.com/ab-anand/py-books/blob/master/Data%20Science%20from%20Scratch-%20First%20Principles%20with%20Python.pdf) can be a good starting point.
+
+**Writing Beautiful Python Code**
+
+“My code doesn’t look nice, but it works!”
+This might work for yourself, but often you will work on code with other people. But even if you’re just coding for yourself it’s a good idea to follow the PEP8 style guide. It’s a useful convention on how to structure and code in Python. You'll find useful resources for PEP8 [here](https://realpython.com/python-pep8/) and [here](https://www.python.org/dev/peps/pep-0020/#id2).
+
+**Listen to Python Podcasts**
+
+When you don’t have time for books you can listen to [Talk Python](https://talkpython.fm/home) or the [Python Podcast](https://www.pythonpodcast.com).
+
+
+::::

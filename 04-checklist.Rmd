@@ -1,0 +1,66 @@
+\newpage
+
+# Exercise Checklist
+
+This checklist should help you keep track of your exercises. Remember that you have to hand in satisfactory solutions to at least two-thirds of the exercises. If you're part of the beginner track, this refers to two-thirds of part A (EDA) only. If you're part of the advanced track, you have to hand in at least two-thirds of both individual parts A and B. Hence, you cannot hand in 100 percent of the first part and only 50 percent of the second one. You'll need more than 66% in each one for a certificate. After all, you're not that advanced if you only did half of it, right?
+
+**Part 1: Exploratory Data Analysis (Beginner + Advanced Tracks)**
+
+1.  Visualize available apartments
+
+    a.   Load the `calendar` data set and get an overview of it
+    
+    b.   Transform data in columns `price`, `available`, and `date`
+    
+    c.   Show the number of available Airbnb apartments in a simple line plot
+    
+    d.   Create a calendar plot to visualize the availability of Airbnb listings
+    
+2. Correlation between price and availability
+    
+    a.   Calculate the Correlation Coefficient between `available` and `price`
+    
+    b.   Visualize Correlation
+
+3. Distribution of Prices
+
+    a.   Calculate Mean and Standard Deviation for each neighbourhood
+    
+    b.   Visually compare the price distribution for the, on average, most expensive neighbourhood with the least expensive one
+    
+4. Analysis of Listing Reviews
+
+    a.   Compute the average number of reviews per apartment
+
+    b.   Merge with the `listings` data set to extract the location of listings
+    
+    c.   Plot the location of 200 most reviewed apartments (e.g. with barplot)
+
+5. Maps
+
+    a.   Map the 200 most frequently reviewed apartments
+    
+    b.   Create a new map extending its functionality by adding a pop up window
+    
+    c.   Create a heatmap
+    
+6. BE CREATIVE
+
+    a.   Surprise us with one or more plots of your choice!
+
+
+
+**Part 2: Price Prediction Using Statistical Methods (motivated Beginner + Advanced Tracks)**
+
+
+1.  Visualize feature correlations in a correlation matrix/heatmap
+
+2.  Regression
+
+    a.  Simple regression model using one variable
+
+    b.  Improve your model using more features
+
+3.  Improve your model
+
+    a.  Train new models using more advanced methods

@@ -1,0 +1,73 @@
+\newcommand{\sectionbreak}{\clearpage}
+\usepackage{booktabs}
+\RequirePackage{fix-cm}
+\usepackage[many]{tcolorbox}
+\usepackage{xcolor}
+
+\definecolor{r}{HTML}{2369bd}
+\definecolor{p}{HTML}{ffde4d}
+\definecolor{boxgrey}{HTML}{fefefe}
+
+\newtcolorbox{rbox}{
+  colback=boxgrey,
+  colframe=r,
+  coltext=black,
+  boxsep=5pt,
+  arc=4pt}
+  
+\newtcolorbox{pbox}{
+  colback=boxgrey,
+  colframe=p,
+  coltext=black,
+  boxsep=5pt,
+  arc=4pt}
+
+
+\newenvironment{tips}[1]
+  {
+  \begin{itemize}
+  \footnotesize
+  \renewcommand{\labelitemi}{
+    \raisebox{-.7\height}[0pt][0pt]{
+      {\setkeys{Gin}{width=3em,keepaspectratio}
+        \includegraphics{images/#1.png}}
+    }
+  }
+  \setlength{\fboxsep}{1em}
+  \begin{rbox}
+  \item
+  }
+  {
+  \end{rbox}
+  \end{itemize}
+  }
+  
+  
+\newenvironment{tipsp}[1]
+  {
+  \begin{itemize}
+  \footnotesize
+  \renewcommand{\labelitemi}{
+    \raisebox{-.7\height}[0pt][0pt]{
+      {\setkeys{Gin}{width=3em,keepaspectratio}
+        \includegraphics{images/#1.png}}
+    }
+  }
+  \setlength{\fboxsep}{1em}
+  \begin{pbox}
+  \item
+  }
+  {
+  \end{pbox}
+  \end{itemize}
+  }
+  
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\usepackage{setspace}
+\usepackage{chngcntr}
+\onehalfspacing
+
+\usepackage{titling}
+\pretitle{\begin{center}\LARGE\includegraphics[width=6cm]{plot/TA_Logo.png}\\[\bigskipamount]}
+\posttitle{\end{center}}

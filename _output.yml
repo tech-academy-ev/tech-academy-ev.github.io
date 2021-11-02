@@ -1,0 +1,20 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Airbnb Data Science Project</a></li>
+      after: |
+        <li><a href="https://tech-academy.io/" target="blank">&copy 2021 TechAcademy e.V.</a></li>
+      download: ["pdf"]
+    
+bookdown::pdf_book:
+  toc: no
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default
+
+
