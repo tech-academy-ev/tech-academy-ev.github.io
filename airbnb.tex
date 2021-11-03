@@ -721,7 +721,9 @@ You can use the following functions, for example:
 
 \begin{tipsp}p
 Import the pandas library to your notebook with \texttt{import\ pandas\ as\ pd}.
-Use the same pandas method used to import CSV data on Datacamp to import CSV data from a web server: Just replace the file path with the URL of the CSV file.
+
+Use the same pandas method used to import CSV data on Datacamp to import CSV files from a web server: Just replace the file path with the URL of the CSV file. Be aware that our csv data has been compressed to gzip format (.csv.gzip). This is no problem! You can still use the same method, but you will need to add an additional argument to the function, which is \texttt{compression="gzip"}.\\
+\ldots yes, the pandas library is extremely powerful! 😉
 
 Take a look at the first rows of your data frame and print some descriptive statistics with the pandas methods \texttt{.head()} and \texttt{.describe()}.
 Also, find out the data types for each column: Are values in the price column stored as numbers?
