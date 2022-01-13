@@ -1,15 +1,19 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
   11pt,
 ]{article}
+\title{Data Science Project Guide: Airbnb}
+\author{TechAcademy e.V.}
+\date{Winter Term 2021/22}
+
+\usepackage{amsmath,amssymb}
 \usepackage[]{mathpazo}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -41,14 +45,15 @@
   pdftitle={Data Science Project Guide: Airbnb},
   pdfauthor={TechAcademy e.V.},
   colorlinks=true,
-  linkcolor=Maroon,
-  filecolor=Maroon,
-  citecolor=Blue,
-  urlcolor=blue,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage[top=0.5in, bottom=1.5in, left=1in, right=1in, a4paper]{geometry}
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
@@ -57,7 +62,7 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -147,12 +152,11 @@
 \usepackage{titling}
 \pretitle{\begin{center}\LARGE\includegraphics[width=6cm]{plot/TA_Logo.png}\\[\bigskipamount]}
 \posttitle{\end{center}}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
-
-\title{Data Science Project Guide: Airbnb}
-\author{TechAcademy e.V.}
-\date{Winter Term 2021/22}
 
 \begin{document}
 \maketitle
@@ -354,7 +358,6 @@ After completing the curriculum and the project's (minimal) requirements, you wi
   \href{https://www.datacamp.com/courses/optimizing-r-code-with-rcpp}{Optimizing R Code with Rcpp (4h)}
 \end{itemize}
 
-
 \end{tips}
 
 \hypertarget{helpful-links}{%
@@ -428,7 +431,7 @@ If you are convinced that the course does not add value to you, feel free to rep
 However, you should not pursue an exchange course until you finish all chapters from the advanced course: ``Intermediate Python.''
 
 To receive the certificate, both beginners and advanced learners must complete at least two-thirds of the curriculum (6/9 courses).
-For the beginners, this means until -- and including -- the course ``\href{https://learn.datacamp.com/courses/merging-dataframes-with-pandas}{Merging DataFrames with pandas (4h)}'' and for the advanced until --and including -- ``\href{https://learn.datacamp.com/courses/exploratory-data-analysis-in-python}{Exploratory Data Analysis in Phyton (4h)}.'' In addition, you should complete at least two-thirds of the project tasks.
+For the beginners, this means until -- and including -- the course ``\href{https://www.datacamp.com/courses/joining-data-with-pandas}{Joining Data with pandas (4h)}'' and for the advanced until --and including -- ``\href{https://learn.datacamp.com/courses/exploratory-data-analysis-in-python}{Exploratory Data Analysis in Phyton (4h)}.'' In addition, you should complete at least two-thirds of the project tasks.
 After completing the curriculum and the project's (minimal) requirements, you will receive your TechAcademy certificate!
 
 \begin{tipsp}p
@@ -447,9 +450,9 @@ After completing the curriculum and the project's (minimal) requirements, you wi
 \item
   \href{https://www.datacamp.com/courses/introduction-to-matplotlib}{Introduction to Data Visualization with Matplotlib (4h)}
 \item
-  \href{https://www.datacamp.com/courses/manipulating-dataframes-with-pandas}{Manipulating DataFrames with pandas (4h)}
+  \href{https://www.datacamp.com/courses/data-manipulation-with-pandas}{Data Manipulation with pandas (4h)}
 \item
-  \href{https://www.datacamp.com/courses/merging-dataframes-with-pandas}{Merging DataFrames with pandas (4h)}
+  \href{https://www.datacamp.com/courses/joining-data-with-pandas}{Joining Data with pandas (4h)}
 \item
   \href{https://www.datacamp.com/courses/exploratory-data-analysis-in-python}{Exploratory Data Analysis in Phyton (4h)}
 \item
@@ -512,7 +515,6 @@ After completing the curriculum and the project's (minimal) requirements, you wi
 \item
   \href{https://www.datacamp.com/courses/forecasting-using-arima-models-in-python}{ARIMA Models in Python (4h)}
 \end{itemize}
-
 
 \end{tipsp}
 
@@ -594,8 +596,6 @@ You can choose from the following list of cities according to your preferences, 
 
 Amsterdam, Boston, Edinburgh, Madrid, München, and Rom.
 
-Find the links to all datasets \href{https://docs.google.com/document/d/1nBkeJmpnoiATVw4B3DwrB45uo0TpQFE_iTisyh4p9Ro/edit?usp=sharing}{here}.
-
 Your data was scraped and is hosted by the Inside Airbnb project.
 You will find all kinds of information in that data set -- both valuable and worthless to your analysis.
 In the analogy of the typical data science workflow, we have split this project into two parts.
@@ -676,7 +676,6 @@ Either way, when importing Airbnb data, you can use the links to the respective 
 
 We will give you a more detailed step-by-step demo during the first coding meetup.
 
-
 \end{tipsp}
 
 \hypertarget{visualizing-apartment-availability}{%
@@ -713,8 +712,8 @@ Now get an overview of the data set.
 How is it structured, and which variables does it contain?
 You can use the following functions, for example:
 
-\texttt{head(calendar)}~\\
-\texttt{str(calendar)}~\\
+\texttt{head(calendar)}\strut \\
+\texttt{str(calendar)}\strut \\
 \texttt{summary(calendar)}
 
 \end{tips}
@@ -722,7 +721,7 @@ You can use the following functions, for example:
 \begin{tipsp}p
 Import the pandas library to your notebook with \texttt{import\ pandas\ as\ pd}.
 
-Use the same pandas method used to import CSV data on Datacamp to import CSV files from a web server: Just replace the file path with the URL of the CSV file. Be aware that our csv data has been compressed to gzip format (.csv.gzip). This is no problem! You can still use the same method, but you will need to add an additional argument to the function, which is \texttt{compression="gzip"}.\\
+Use the same pandas method used to import CSV data on Datacamp to import CSV files from a web server: Just replace the file path with the URL of the CSV file. Find the links to all datasets \href{https://docs.google.com/document/d/1nBkeJmpnoiATVw4B3DwrB45uo0TpQFE_iTisyh4p9Ro/edit?usp=sharing}{here}. Be aware that our csv data has been compressed to gzip format (.csv.gzip). This is no problem! You can still use the same method, but you will need to add an additional argument to the function, which is \texttt{compression="gzip"}.\\
 \ldots yes, the pandas library is extremely powerful! 😉
 
 Take a look at the first rows of your data frame and print some descriptive statistics with the pandas methods \texttt{.head()} and \texttt{.describe()}.
@@ -817,7 +816,11 @@ There are distinct drops in the availability of Airbnb apartments.~
 
 A line plot is good but let's be honest; it's nothing to write home about!
 How about using a calendar plot to get a quick overview of this year's most and least abundant Airbnb months?
-Let's see:
+Let's see how this looks in both R\ldots{}
+
+\begin{center}\includegraphics[width=1\linewidth]{plot/02_r/r_calendar} \end{center}
+
+\ldots{} and Python:
 
 \begin{center}\includegraphics[width=1\linewidth]{plot/01_python/calendar} \end{center}
 
@@ -1083,7 +1086,6 @@ for idx, row in df.iterrows() :
 m  # Displays the map
 \end{verbatim}
 
-
 \end{tipsp}
 
 In addition to the coordinates, there is a lot of information about each listing in our data.
@@ -1128,7 +1130,6 @@ folium.Marker(
     tooltip='click me!'
 ).add_to(m)
 \end{verbatim}
-
 
 \end{tipsp}
 
@@ -1254,7 +1255,7 @@ In \texttt{R} you can implement a simple linear regression with the function \te
 \end{tips}
 
 \begin{tipsp}p
-Define both dependent (y\_train) and independent (X\_train) variables and clean the data if necessary.
+Define both dependent (\texttt{y\_train}) and independent (\texttt{X\_train}) variables and clean the data if necessary.
 
 For the next step the X\_train values need to be reshaped \texttt{.values.reshape(-1,1)}.
 Note: If you use more then one feature you don't have to reshape your data.
@@ -1277,11 +1278,11 @@ You can easily include such LaTeX tables in your RMarkdown document with the \te
 
 \begin{center}\includegraphics[width=1\linewidth]{plot/5_table} \end{center}
 
-
 \end{tips}
 
 \begin{tipsp}p
-Apply the \texttt{.summary()} method on the fitted model estimator.
+Above table has been created with \texttt{R}. In Python, when using \texttt{sklearn} we need to print all metrics and information independently:
+Find several metrics, such as \(R^2\) in the \href{https://scikit-learn.org/stable/modules/model_evaluation.html}{\texttt{sklean.metrics}} module while other model parameters (estimated coefficients, intercept, \ldots) are simply \href{https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html}{stored as attributes} in your trained model object.
 
 \end{tipsp}
 
@@ -1316,12 +1317,11 @@ sqrt(mean((predicted - actual)^2, na.rm = TRUE))
 }
 \end{verbatim}
 
-
 \end{tips}
 
 \begin{tipsp}p
 
-After training, import the data from the \texttt{test.csv} file, define both variables \texttt{X\_test}and \texttt{y\_test}, and create a vector with price predictions applying \texttt{.predict(X\_test)} on your model. Store your prediction in the variable \texttt{predicted\_price}.
+After training, create a vector with price predictions applying \texttt{.predict(X\_test)} on your model. Store your prediction in the variable \texttt{predicted\_price}.
 
 Finally, compare your predicted values with the test values:
 
@@ -1330,7 +1330,6 @@ from sklearn.metrics import mean_squared_error
 # Function that returns Root Mean Squared Error while ignoring NaNs
 rmse = mean_squared_error(y_test, predicted_price, squared=False)
 \end{verbatim}
-
 
 \end{tipsp}
 
@@ -1469,19 +1468,16 @@ At the end of your TechAcademy semester, you've successfully coded your way thro
 
 \hypertarget{version-control-with-git}{%
 \subsubsection*{\texorpdfstring{Version Control with \href{https://github.com/}{Git}}{Version Control with Git}}\label{version-control-with-git}}
-\addcontentsline{toc}{subsubsection}{Version Control with \href{https://github.com/}{Git}}
 
 If you're serious about data science, you will need Git. Better learn it early and start enjoying and appreciating it before it's too late and you're pressured into learning it on the fly! Every project you do should be accompanied by a VCS (Version Control System) like Git. Regardless if you're working alone or with a big group of developers. No matter whether you write ten lines of code or a really complex program. With Git, you can keep track of all your changes. It's like a Dropbox/Google Drive for developers, but way better. Pro-Tip: Get free GitHub Pro as a Student with the \href{https://education.github.com/pack}{GitHub Student Developer Pack}. Besides all the perks of GitHub Pro, you'll also free access to many other great tools. See the respective tutorials on how to set up your Git workflow.
 
 \hypertarget{advice-for-non-traditional-data-scientists}{%
 \subsubsection*{\texorpdfstring{Advice for \href{https://blog.shotwell.ca/posts/learning_data_science/}{Non-Traditional Data Scientists}}{Advice for Non-Traditional Data Scientists}}\label{advice-for-non-traditional-data-scientists}}
-\addcontentsline{toc}{subsubsection}{Advice for \href{https://blog.shotwell.ca/posts/learning_data_science/}{Non-Traditional Data Scientists}}
 
 Important advice from Gordon Shotwell, a former lawyer, on what it takes to have a successful data science career coming from a non-computer science background. Extremely encouraging and helpful read on what you should and shouldn't do to reach that goal.
 
 \hypertarget{learn-from-great-data-scientists-on-kaggle}{%
 \subsubsection*{\texorpdfstring{Learn from Great Data Scientists on \href{https://www.kaggle.com/}{Kaggle}}{Learn from Great Data Scientists on Kaggle}}\label{learn-from-great-data-scientists-on-kaggle}}
-\addcontentsline{toc}{subsubsection}{Learn from Great Data Scientists on \href{https://www.kaggle.com/}{Kaggle}}
 
 Kaggle is a platform that hosts data science challenges. The great thing about it is that you can browse through many clever solutions to tricky machine learning tasks. And of course, you can also join the competition and measure your predictions with others. There are plenty of both Python and R notebooks.
 
